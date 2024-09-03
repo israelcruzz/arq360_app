@@ -14,8 +14,14 @@ export const useOnboardingOne = () => {
     await onboardingStore.save();
   }
 
+  const handlePrevScreen = () => {
+    navigation.navigate('OnboardingTwo');
+  }
+
+
   return {
     handleClickNextButton,
-    handleClickSkipButton
+    handleClickSkipButton,
+    handlePrevScreen
   }
 }
