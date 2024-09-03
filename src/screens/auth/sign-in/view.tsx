@@ -3,8 +3,9 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import { DescriptionText } from '~/components/description-text';
 import { HeadingText } from '~/components/heading-text';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '~/components/input';
+import { Button } from '~/components/button';
 
 export const SignInView = () => {
   const [viewPassword, setViewPassoword] = useState<boolean>(true);
@@ -21,6 +22,16 @@ export const SignInView = () => {
     setVerifyEmail(verify);
   }, [text, email]);
 
+  const uiElements: Record<string, React.ReactNode> = {
+    true: <AntDesign name="eye" size={24} color="#D1D1D1" />,
+    false: <AntDesign name="eye" size={24} color="#151515" />,
+  };
+
+  const uiElementsEmail: Record<string, React.ReactNode> = {
+    true: <AntDesign name="checkcircle" size={20} color="#151515" />,
+    false: <AntDesign name="checkcircle" size={20} color="#D1D1D1" />,
+  };
+
   return (
     <View style={styles.container}>
       <HeadingText title="Welcome Back" />
@@ -32,7 +43,7 @@ export const SignInView = () => {
         keyboardType="email-address"
         autoCapitalize="none"
         autoComplete="email">
-        { verifyEmail ? <AntDesign name="checkcircle" size={20} color="#151515" /> :  <AntDesign name="checkcircle" size={24} color="#D1D1D1" />}
+        {uiElementsEmail[String(verifyEmail)]}
       </Input>
       <Input
         onChangeText={setText}
@@ -40,13 +51,11 @@ export const SignInView = () => {
         placeholder="*********"
         placeholderTextColor="#D1D1D1">
         <TouchableOpacity onPress={() => setViewPassoword(!viewPassword)}>
-          {viewPassword ? (
-            <AntDesign name="eye" size={24} color="#D1D1D1" />
-          ) : (
-            <AntDesign name="eye" size={24} color="#151515" />
-          )}
+          {uiElements[String(viewPassword)]}
         </TouchableOpacity>
       </Input>
+
+      <Button text="Login" variant="primary" />
     </View>
   );
 };
