@@ -8,6 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect, useState } from 'react';
 import { Input } from '~/components/input';
 import { Button } from '~/components/button';
+import { Label } from '~/components/label';
+import { TextLink } from '~/components/text-link';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { AuthRootList } from '~/navigation/auth.navigation';
 
 const validateFormSchema = Yup.object().shape({
   email: Yup.string().email('E-mail inválido').required('Campo obrigatório'),
@@ -56,10 +60,14 @@ export const SignInView = () => {
     false: <AntDesign name="checkcircle" size={20} color="#D1D1D1" />,
   };
 
+  const navigator = useNavigation<NavigationProp<AuthRootList>>();
+
   return (
     <View style={styles.container}>
       <HeadingText title="Welcome Back" />
       <DescriptionText text="Your new password must be unique from those previously used." />
+
+      <Label title='E-mail' />
       <Controller
         control={control}
         name="email"
@@ -80,6 +88,7 @@ export const SignInView = () => {
       />
       {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
 
+      <Label title='Senha' />
       <Controller
         control={control}
         name="password"
@@ -98,6 +107,7 @@ export const SignInView = () => {
           </Input>
         )}
       />
+      <TextLink variant='primary' title='Esqueceu a senha?' style={{ alignSelf: 'flex-end' }} />
       {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
 
       <Button text="Login" variant="primary" onPress={handleSubmit(handleSubmitForm)} />
