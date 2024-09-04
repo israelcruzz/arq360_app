@@ -8,9 +8,13 @@ export const styles = StyleSheet.create({
     padding: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     gap: 4,
   },
   textInput: {
     flex: 1
+  },
+  inputError: {
+    borderColor: '#ff0000'
   }
 });
