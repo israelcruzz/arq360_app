@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text } from 'react-native';
-import { SignInView } from '~/screens/auth/sign-in/view';
 import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
+import { SignUpStepOne } from '~/screens/auth/sign-up/step-one/view';
 
 export type AuthRootList = {
   signin: undefined;
@@ -9,12 +8,6 @@ export type AuthRootList = {
 };
 
 const Stack = createStackNavigator<AuthRootList>();
-
-const Testing = () => {
-  return (
-    <Text>a</Text>
-  )
-}
 
 export default function AuthNavigation() {
   return (
@@ -26,7 +19,7 @@ export default function AuthNavigation() {
       />
       <Stack.Screen
         name="signup"
-        component={Testing}
+        component={SignUpStepOne}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
