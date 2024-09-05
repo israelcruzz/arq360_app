@@ -1,128 +1,93 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { DescriptionText } from '~/components/description-text';
 import { HeadingText } from '~/components/heading-text';
-import { useForm, Controller } from 'react-hook-form';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useEffect, useState } from 'react';
+import { Controller } from 'react-hook-form';
+import React from 'react';
 import { Input } from '~/components/input';
 import { Button } from '~/components/button';
 import { Label } from '~/components/label';
 import { TextLink } from '~/components/text-link';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { AuthRootList } from '~/navigation/auth.navigation';
+import { styles } from './styles';
+import { useSignIn } from './model';
 
-const validateFormSchema = Yup.object().shape({
-  email: Yup.string().email('E-mail inválido').required('Campo obrigatório'),
-  password: Yup.string()
-    .min(6, 'A senha deve ter pelo menos 6 caracteres')
-    .required('Campo obrigatório'),
-});
-
-export const SignInView = () => {
-  const [viewPassword, setViewPassoword] = useState<boolean>(true);
-  const [verifyEmail, setVerifyEmail] = useState<boolean>(false);
-
-  type SubmitFormValidateData = Yup.InferType<typeof validateFormSchema>;
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<SubmitFormValidateData>({
-    resolver: yupResolver(validateFormSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
-
-  const email = watch('email');
-
-  const handleSubmitForm = (data: SubmitFormValidateData) => {
-    Alert.alert('Dados do Form', `E-mail: ${data.email} & Senha: ${data.password}`);
-  };
-
-  useEffect(() => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setVerifyEmail(emailRegex.test(email));
-  }, [email]);
-
-  const uiElements: Record<string, React.ReactNode> = {
-    true: <AntDesign name="eye" size={24} color="#D1D1D1" />,
-    false: <AntDesign name="eye" size={24} color="#151515" />,
-  };
-
-  const uiElementsEmail: Record<string, React.ReactNode> = {
-    true: <AntDesign name="checkcircle" size={20} color="#151515" />,
-    false: <AntDesign name="checkcircle" size={20} color="#D1D1D1" />,
-  };
-
-  const navigator = useNavigation<NavigationProp<AuthRootList>>();
-
+export const SignInView = ({
+  control,
+  errors,
+  handleSubmit,
+  handleSubmitForm,
+  handleViewPassword,
+  navigateToForgotPassword,
+  navigateToSignUp,
+  iconsVerifyEmail,
+  iconsVerifyPassword,
+  verifyEmail,
+  viewPassword,
+}: ReturnType<typeof useSignIn>) => {
   return (
     <View style={styles.container}>
-      <HeadingText title="Welcome Back" />
-      <DescriptionText text="Your new password must be unique from those previously used." />
+      <View style={styles.headerArea}>
+        <HeadingText title="Bem vindo" />
+        <DescriptionText text="Your new password must be unique from those previously used." />
+      </View>
 
-      <Label title='E-mail' />
-      <Controller
-        control={control}
-        name="email"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            placeholder="example@email.com"
-            placeholderTextColor="#D1D1D1"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            isErrorValidate={!!errors.email}
-            autoComplete="email">
-            {uiElementsEmail[String(verifyEmail)]}
-          </Input>
-        )}
-      />
-      {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
+      <View style={styles.inputsArea}>
+        <View>
+          <Label title='E-mail' />
+          <Controller
+            control={control}
+            name="email"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value}
+                placeholder="example@email.com"
+                placeholderTextColor="#D1D1D1"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                isErrorValidate={!!errors.email}
+                autoComplete="email">
+                {iconsVerifyEmail[String(verifyEmail)]}
+              </Input>
+            )}
+          />
+          {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
+        </View>
 
-      <Label title='Senha' />
-      <Controller
-        control={control}
-        name="password"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            secureTextEntry={viewPassword}
-            placeholder="*********"
-            placeholderTextColor="#D1D1D1"
-            isErrorValidate={!!errors.email}>
-            <TouchableOpacity onPress={() => setViewPassoword(!viewPassword)}>
-              {uiElements[String(viewPassword)]}
-            </TouchableOpacity>
-          </Input>
-        )}
-      />
-      <TextLink variant='primary' title='Esqueceu a senha?' style={{ alignSelf: 'flex-end' }} />
-      {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
+        <View>
+          <Label title='Senha' />
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value}
+                secureTextEntry={viewPassword}
+                placeholder="*********"
+                placeholderTextColor="#D1D1D1"
+                isErrorValidate={!!errors.password}>
+                <TouchableOpacity onPress={handleViewPassword}>
+                  {iconsVerifyPassword[String(viewPassword)]}
+                </TouchableOpacity>
+              </Input>
+            )}
+          />
+          {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
+          <TextLink variant='primary' title='Esqueceu a senha?' style={styles.forgotPasswordText} onPress={navigateToForgotPassword} />
+        </View>
+      </View>
 
-      <Button text="Login" variant="primary" onPress={handleSubmit(handleSubmitForm)} />
+
+      <View style={styles.submitArea}>
+        <Button text="Login" variant="primary" onPress={handleSubmit(handleSubmitForm)} />
+        <View style={styles.dontHaveAccountArea}>
+          <Text style={styles.textDontHaveAccount}>Você não possui uma conta?</Text>
+          <TextLink variant='secondary' title='Cadastra-se' onPress={navigateToSignUp} />
+        </View>
+      </View>
+
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-    paddingVertical: 48,
-  },
-  error: {
-    color: 'red',
-    paddingVertical: 4,
-  },
-});
