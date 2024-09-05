@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
-import { SignUpStepOne } from '~/screens/auth/sign-up/step-one/view';
+import { SignUpStepOneViewModel } from '~/screens/auth/sign-up/step-one/view-model';
 
 export type AuthRootList = {
   signin: undefined;
@@ -19,7 +19,7 @@ export default function AuthNavigation() {
       />
       <Stack.Screen
         name="signup"
-        component={SignUpStepOne}
+        component={SignUpStepOneViewModel}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
