@@ -3,10 +3,12 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'space-between'
   },
   image: {
     maxWidth: '100%',
     width: '100%',
+    height: '70%',
     marginBottom: 24,
     borderBottomLeftRadius: 64,
     borderBottomRightRadius: 64, 
@@ -49,10 +51,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 24,
+    paddingHorizontal: 40,
+    paddingBottom: 32,
   },
   linkText: {
     color: '#7D94A0',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '500',
   },
   nextButton: {

@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 
 import { OnboardingOneViewModel } from '~/screens/onboarding/onboarding-one/view-model';
 import { OnboardingTwoViewModel } from '~/screens/onboarding/onboarding-two/view-model';
@@ -12,7 +12,7 @@ const Stack = createStackNavigator<OnBoardingRootList>();
 
 export default function OnboardingNavigation() {
   return (
-    <Stack.Navigator initialRouteName="OnboardingOne">
+    <Stack.Navigator initialRouteName="OnboardingOne" screenOptions={{ animationEnabled: false }}>
       <Stack.Screen
         name="OnboardingOne"
         component={OnboardingOneViewModel}
