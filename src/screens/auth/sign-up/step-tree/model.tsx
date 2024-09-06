@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AuthRootList } from "~/navigation/auth.navigation";
 
-export const useSignUpStepOne = () => {
+export const useSignUpStepTree = () => {
   const [verifyEmail, setVerifyEmail] = useState<boolean>(false);
 
   const validateFormSchema = Yup.object().shape({

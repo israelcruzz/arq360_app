@@ -62,11 +62,11 @@ export const useSignIn = () => {
   const navigator = useNavigation<NavigationProp<AuthRootList>>();
 
   const navigateToForgotPassword = () => {
-    navigator.navigate('signup')
+    navigator.navigate('signUpStepOne')
   }
 
   const navigateToSignUp = () => {
-    navigator.navigate('signup')
+    navigator.navigate('signUpStepOne')
   }
 
   return {
