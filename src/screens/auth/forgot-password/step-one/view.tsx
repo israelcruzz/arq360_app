@@ -7,8 +7,16 @@ import { Controller } from "react-hook-form";
 import { Label } from "~/components/label";
 import { Input } from "~/components/input";
 import { Button } from "~/components/button";
+import { useForgotPasswordStepOne } from "./model";
 
-export const ForgotPasswordStepOneView = () => {
+export const ForgotPasswordStepOneView = ({
+  control,
+  errors,
+  handleSubmit,
+  handleSubmitForm,
+  iconsVerifyEmail,
+  verifyEmail,
+}: ReturnType<typeof useForgotPasswordStepOne>) => {
   return (
     <View style={styles.container}>
       <View>
@@ -23,7 +31,7 @@ export const ForgotPasswordStepOneView = () => {
 
         <View style={styles.inputsArea}>
           <View>
-            <Label title="Name" />
+            <Label title="E-mail" />
             <Controller
               control={control}
               name="email"
@@ -37,7 +45,9 @@ export const ForgotPasswordStepOneView = () => {
                   keyboardType="email-address"
                   autoCapitalize="none"
                   isErrorValidate={!!errors.email}
-                  autoComplete="email" />
+                  autoComplete="email">
+                  {iconsVerifyEmail[String(verifyEmail)]}
+                </Input>
               )}
             />
             {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
