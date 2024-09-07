@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
+import { SignUpStepForViewModel } from '~/screens/auth/sign-up/step-for/view-model';
 import { SignUpStepOneViewModel } from '~/screens/auth/sign-up/step-one/view-model';
 import { SignUpStepTreeViewModel } from '~/screens/auth/sign-up/step-tree/view-model';
 import { SignUpStepTwoViewModel } from '~/screens/auth/sign-up/step-two/view-model';
@@ -16,7 +17,7 @@ const Stack = createStackNavigator<AuthRootList>();
 
 export default function AuthNavigation() {
   return (
-    <Stack.Navigator initialRouteName="signIn">
+    <Stack.Navigator initialRouteName="signUpStepFor">
       <Stack.Screen
         name="signIn"
         component={SignInViewModel}
@@ -35,6 +36,11 @@ export default function AuthNavigation() {
       <Stack.Screen
         name="signUpStepTree"
         component={SignUpStepTreeViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="signUpStepFor"
+        component={SignUpStepForViewModel}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
