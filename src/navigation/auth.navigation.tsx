@@ -1,32 +1,46 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text } from 'react-native';
-import { SignInView } from '~/screens/auth/sign-in/view';
 import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
+import { SignUpStepForViewModel } from '~/screens/auth/sign-up/step-for/view-model';
+import { SignUpStepOneViewModel } from '~/screens/auth/sign-up/step-one/view-model';
+import { SignUpStepTreeViewModel } from '~/screens/auth/sign-up/step-tree/view-model';
+import { SignUpStepTwoViewModel } from '~/screens/auth/sign-up/step-two/view-model';
 
 export type AuthRootList = {
-  signin: undefined;
-  signup: undefined;
+  signIn: undefined;
+  signUpStepOne: undefined;
+  signUpStepTwo: undefined;
+  signUpStepTree: undefined;
+  signUpStepFor: undefined
 };
 
 const Stack = createStackNavigator<AuthRootList>();
 
-const Testing = () => {
-  return (
-    <Text>a</Text>
-  )
-}
-
 export default function AuthNavigation() {
   return (
-    <Stack.Navigator initialRouteName="signin">
+    <Stack.Navigator initialRouteName="signUpStepFor">
       <Stack.Screen
-        name="signin"
+        name="signIn"
         component={SignInViewModel}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="signup"
-        component={Testing}
+        name="signUpStepOne"
+        component={SignUpStepOneViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="signUpStepTwo"
+        component={SignUpStepTwoViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="signUpStepTree"
+        component={SignUpStepTreeViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="signUpStepFor"
+        component={SignUpStepForViewModel}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

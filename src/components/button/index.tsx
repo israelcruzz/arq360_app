@@ -2,11 +2,11 @@ import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { styles } from './styles';
 
 export interface ButtonProps extends TouchableOpacityProps {
-  variant: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
   text: string;
 }
 
-export const Button = ({ variant, text, ...props }: ButtonProps) => {
+export const Button = ({ variant = 'primary', text, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity
       {...props}
