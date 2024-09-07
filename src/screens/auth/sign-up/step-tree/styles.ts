@@ -29,4 +29,29 @@ export const styles = StyleSheet.create({
   inputsArea: {
     gap: 24
   },
+  buttonsArea: {
+    gap: 12
+  },
+  image: {
+    borderRadius: 999,
+    borderWidth: 2,
+    borderColor: '#000',
+  },
+  buttonUpload: {
+    width: 40,
+    height: 40,
+    backgroundColor: '#000',
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  },
+  photoImage: {
+    marginTop: 24,
+    alignSelf: 'center',
+    width: 156,
+    height: 156,
+  }
 })
