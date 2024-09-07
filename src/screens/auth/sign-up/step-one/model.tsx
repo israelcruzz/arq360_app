@@ -1,11 +1,11 @@
 import { Alert } from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AuthRootList } from "~/navigation/auth.navigation";
+import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
 
 export const useSignUpStepOne = () => {
   const [verifyEmail, setVerifyEmail] = useState<boolean>(false);
@@ -36,11 +36,6 @@ export const useSignUpStepOne = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setVerifyEmail(emailRegex.test(email));
   }, [email]);
-
-  const iconsVerifyEmail: Record<string, React.ReactNode> = {
-    true: <AntDesign name="checkcircle" size={20} color="#151515" />,
-    false: <AntDesign name="checkcircle" size={20} color="#D1D1D1" />,
-  };
 
   const handleSubmitForm = (data: SubmitFormValidateData) => {
     Alert.alert('Emaill', data.email);

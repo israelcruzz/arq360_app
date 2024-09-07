@@ -10,7 +10,11 @@ export type AuthRootList = {
   signUpStepOne: undefined;
   signUpStepTwo: undefined;
   signUpStepTree: undefined;
-  signUpStepFor: undefined
+  signUpStepFor: undefined;
+  forgotPasswordStepOne: undefined;
+  forgotPasswordStepTwo: undefined;
+  forgotPasswordStepTree: undefined;
+  forgotPasswordStepFor: undefined;
 };
 
 const Stack = createStackNavigator<AuthRootList>();
@@ -43,6 +47,26 @@ export default function AuthNavigation() {
         component={SignUpStepForViewModel}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="forgotPasswordStepOne"
+        component={SignUpStepForViewModel}
+        options={{ headerShown: false }}
+      />
+      {/* <Stack.Screen
+        name="forgotPasswordStepTwo"
+        component={SignUpStepForViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="forgotPasswordStepTree"
+        component={SignUpStepForViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="forgotPasswordStepTree"
+        component={SignUpStepForViewModel}
+        options={{ headerShown: false }}
+      /> */}
     </Stack.Navigator>
   )
 }

@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { AuthRootList } from "~/navigation/auth.navigation";
+import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
+import { iconsVerifyPassword } from "~/utils/records/icons-verify-password";
 
 export const useSignUpStepTwo = () => {
   const [viewPassword, setViewPassword] = useState<boolean>(true);
@@ -32,11 +34,6 @@ export const useSignUpStepTwo = () => {
     }
   });
 
-  const iconsVerifyEmail: Record<string, React.ReactNode> = {
-    true: <AntDesign name="checkcircle" size={20} color="#151515" />,
-    false: <AntDesign name="checkcircle" size={20} color="#D1D1D1" />,
-  };
-
   const handleSubmitForm = (data: SubmitFormValidateData) => {
     const verifyPasswordsMatch = data.password === data.confirmPassword;
 
@@ -54,11 +51,6 @@ export const useSignUpStepTwo = () => {
   const handleClickNextScreen = () => {
     navigation.navigate('signUpStepTree');
   }
-
-  const iconsVerifyPassword: Record<string, React.ReactNode> = {
-    true: <AntDesign name="eye" size={24} color="#D1D1D1" />,
-    false: <AntDesign name="eye" size={24} color="#151515" />,
-  };
 
   const handleViewPassword = () => {
     setViewPassword(!viewPassword)

@@ -1,9 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import TabNavigator from './tab-navigator';
-import Modal from '../screens/modal';
-import OnboardingRoot from './onboarding-navigator';
 import { OnboardingProvider } from '~/context/onboarding-context/onboarding-provider';
 import { Router } from './router';
 
