@@ -2,7 +2,7 @@ import { useForgotPasswordStepFor } from "./model"
 import { ForgotPasswordStepForView } from "./view";
 
 export const ForgotPasswordStepForViewModel = () => {
-  const data = useForgotPasswordStepFor();
+  const { handleNextScreen } = useForgotPasswordStepFor();
 
-  return <ForgotPasswordStepForView  />
+  return <ForgotPasswordStepForView handleNextScreen={handleNextScreen} />
 }

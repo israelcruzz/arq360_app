@@ -3,7 +3,9 @@ import { styles } from "./styles";
 import { Button } from "~/components/button";
 import { useForgotPasswordStepFor } from "./model";
 
-export const ForgotPasswordStepForView = () => {
+export const ForgotPasswordStepForView = ({
+  handleNextScreen,
+}: ReturnType<typeof useForgotPasswordStepFor>) => {
   return (
     <View style={styles.container}>
       <View style={styles.contentArea}>
@@ -15,7 +17,7 @@ export const ForgotPasswordStepForView = () => {
       </View>
 
       <View style={styles.buttonArea}>
-        <Button text="Próximo" />
+        <Button text="Próximo" onPress={handleNextScreen} />
       </View>
     </View>
   )
