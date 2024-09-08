@@ -1,7 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
+import { AuthRootList } from '~/navigation/auth.navigation';
 import { iconsVerifyEmail } from '~/utils/records/icons-verify-email';
 
 export const useForgotPasswordStepOne = () => {
@@ -32,7 +34,10 @@ export const useForgotPasswordStepOne = () => {
     setVerifyEmail(emailRegex.test(email));
   }, [email]);
 
-  const handleSubmitForm = () => {}
+  const navigator = useNavigation<NavigationProp<AuthRootList>>();
+  const handleSubmitForm = () => {
+    navigator.navigate('forgotPasswordStepTwo');
+  }
 
   return {
     verifyEmail,
