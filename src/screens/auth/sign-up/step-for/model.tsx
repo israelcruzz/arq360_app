@@ -18,7 +18,10 @@ export const useSignUpStepFor = () => {
     const verifySubscriptionExists = subscriptionSelected === undefined;
 
     if (verifySubscriptionExists) {
-      Alert.alert('Selecione uma assinatura', 'Você precisa selecionar uma assinatura para continuar');
+      Alert.alert(
+        'Selecione uma assinatura',
+        'Você precisa selecionar uma assinatura para continuar'
+      );
       return;
     }
   }

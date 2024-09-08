@@ -1,5 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
+import { ForgotPasswordStepForViewModel } from '~/screens/auth/forgot-password/step-for/view-model';
 import { ForgotPasswordStepOneViewModel } from '~/screens/auth/forgot-password/step-one/view-model';
+import { ForgotPasswordStepTreeViewModel } from '~/screens/auth/forgot-password/step-tree/view-model';
 import { ForgotPasswordStepTwoViewModel } from '~/screens/auth/forgot-password/step-two/view-model';
 import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
 import { SignUpStepForViewModel } from '~/screens/auth/sign-up/step-for/view-model';
@@ -23,7 +25,7 @@ const Stack = createStackNavigator<AuthRootList>();
 
 export default function AuthNavigation() {
   return (
-    <Stack.Navigator initialRouteName="forgotPasswordStepTwo">
+    <Stack.Navigator initialRouteName="forgotPasswordStepFor">
       <Stack.Screen
         name="signIn"
         component={SignInViewModel}
@@ -59,17 +61,16 @@ export default function AuthNavigation() {
         component={ForgotPasswordStepTwoViewModel}
         options={{ headerShown: false }}
       />
-      {/*
       <Stack.Screen
         name="forgotPasswordStepTree"
-        component={SignUpStepForViewModel}
+        component={ForgotPasswordStepTreeViewModel}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="forgotPasswordStepTree"
-        component={SignUpStepForViewModel}
+        name="forgotPasswordStepFor"
+        component={ForgotPasswordStepForViewModel}
         options={{ headerShown: false }}
-      /> */}
+      /> 
     </Stack.Navigator>
   )
 }
