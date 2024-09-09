@@ -1,5 +1,4 @@
 import { Alert } from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
@@ -9,7 +8,7 @@ import { AuthRootList } from "~/navigation/auth.navigation";
 import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
 import { iconsVerifyPassword } from "~/utils/records/icons-verify-password";
 
-export const useSignUpStepTwo = () => {
+export const useForgotPasswordStepTreeView = () => {
   const [viewPassword, setViewPassword] = useState<boolean>(true);
   const [viewConfirmPassword, setViewConfirmPassword] = useState<boolean>(true);
 

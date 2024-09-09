@@ -1,4 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
+import { ForgotPasswordStepForViewModel } from '~/screens/auth/forgot-password/step-for/view-model';
+import { ForgotPasswordStepOneViewModel } from '~/screens/auth/forgot-password/step-one/view-model';
+import { ForgotPasswordStepTreeViewModel } from '~/screens/auth/forgot-password/step-tree/view-model';
+import { ForgotPasswordStepTwoViewModel } from '~/screens/auth/forgot-password/step-two/view-model';
 import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
 import { SignUpStepForViewModel } from '~/screens/auth/sign-up/step-for/view-model';
 import { SignUpStepOneViewModel } from '~/screens/auth/sign-up/step-one/view-model';
@@ -10,14 +14,18 @@ export type AuthRootList = {
   signUpStepOne: undefined;
   signUpStepTwo: undefined;
   signUpStepTree: undefined;
-  signUpStepFor: undefined
+  signUpStepFor: undefined;
+  forgotPasswordStepOne: undefined;
+  forgotPasswordStepTwo: undefined;
+  forgotPasswordStepTree: undefined;
+  forgotPasswordStepFor: undefined;
 };
 
 const Stack = createStackNavigator<AuthRootList>();
 
 export default function AuthNavigation() {
   return (
-    <Stack.Navigator initialRouteName="signUpStepFor">
+    <Stack.Navigator initialRouteName="forgotPasswordStepFor">
       <Stack.Screen
         name="signIn"
         component={SignInViewModel}
@@ -43,6 +51,26 @@ export default function AuthNavigation() {
         component={SignUpStepForViewModel}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="forgotPasswordStepOne"
+        component={ForgotPasswordStepOneViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="forgotPasswordStepTwo"
+        component={ForgotPasswordStepTwoViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="forgotPasswordStepTree"
+        component={ForgotPasswordStepTreeViewModel}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="forgotPasswordStepFor"
+        component={ForgotPasswordStepForViewModel}
+        options={{ headerShown: false }}
+      /> 
     </Stack.Navigator>
   )
 }

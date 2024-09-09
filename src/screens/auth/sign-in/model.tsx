@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { Alert } from "react-native";
 import * as Yup from 'yup';
 import { AuthRootList } from "~/navigation/auth.navigation";
+import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
+import { iconsVerifyPassword } from "~/utils/records/icons-verify-password";
 
 
 export const useSignIn = () => {
@@ -48,16 +50,6 @@ export const useSignIn = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setVerifyEmail(emailRegex.test(email));
   }, [email]);
-
-  const iconsVerifyEmail: Record<string, React.ReactNode> = {
-    true: <AntDesign name="checkcircle" size={20} color="#151515" />,
-    false: <AntDesign name="checkcircle" size={20} color="#D1D1D1" />,
-  };
-
-  const iconsVerifyPassword: Record<string, React.ReactNode> = {
-    true: <AntDesign name="eye" size={24} color="#D1D1D1" />,
-    false: <AntDesign name="eye" size={24} color="#151515" />,
-  };
 
   const navigator = useNavigation<NavigationProp<AuthRootList>>();
 
