@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import Feather from '@expo/vector-icons/Feather';
 import Octicons from '@expo/vector-icons/Octicons';
+import { Home } from "~/screens/private/home/view";
 
 export type PrivateRootList = {
   home: undefined;
@@ -11,8 +12,6 @@ export type PrivateRootList = {
 };
 
 const Tab = createBottomTabNavigator<PrivateRootList>();
-
-const Home = () => <Text>Home</Text>
 
 const Profile = () => <Text>Profile</Text>
 
