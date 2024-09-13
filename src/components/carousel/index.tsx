@@ -5,8 +5,8 @@ import {
   Text,
   Dimensions,
   StyleSheet,
-  TouchableOpacity,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 
 interface CarouselItem {
@@ -62,33 +62,33 @@ export const MyCarousel: React.FC = () => {
     parallaxProps?: AdditionalParallaxProps
   ) => {
     return (
-      <View style={styles.item}>
-        <ParallaxImage
-          source={{ uri: item.illustration }}
-          containerStyle={styles.imageContainer}
-          style={styles.image}
-          parallaxFactor={0.4}
-          {...parallaxProps}
-        />
-        <View style={styles.textArea}>
-          <Text style={styles.title} numberOfLines={2}>
-            {item.title}
-          </Text>
-          <Text style={styles.subtitle} numberOfLines={2}>
-            {item.subtitle}
-          </Text>
-        </View>
+      <TouchableOpacity>
+        <View style={styles.item}>
+          <ParallaxImage
+            source={{ uri: item.illustration }}
+            containerStyle={styles.imageContainer}
+            style={styles.image}
+            parallaxFactor={0.4}
+            {...parallaxProps}
+          />
+          <View style={styles.textArea}>
+            <Text style={styles.title} numberOfLines={2}>
+              {item.title}
+            </Text>
+            <Text style={styles.subtitle} numberOfLines={2}>
+              {item.subtitle}
+            </Text>
+          </View>
 
-        <View style={styles.linearGradient} />
-      </View>
+          <View style={styles.linearGradient} />
+        </View>
+      </TouchableOpacity>
+
     );
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={goForward}>
-        <Text>Go to next slide</Text>
-      </TouchableOpacity>
       <Carousel
         ref={carouselRef}
         sliderWidth={screenWidth}
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   item: {
     width: screenWidth - 60,
-    height: screenWidth - 10,
+    height: 500
   },
   imageContainer: {
     flex: 1,
@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
   textArea: {
     position: 'absolute',
     bottom: 0,
-    padding: 24
+    padding: 24,
+    zIndex: 99
   },
   title: {
     paddingTop: 10,
@@ -140,8 +141,13 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     position: 'absolute',
-    borderRadius: 8,
+    bottom: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    borderRadius: 16,
     backgroundColor: 'black',
-    opacity: 0.7,
+    opacity: 0.1,
+    zIndex: 1,
   }
 });
