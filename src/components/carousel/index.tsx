@@ -17,9 +17,9 @@ interface CarouselItem {
 
 const ENTRIES1: CarouselItem[] = [
   {
-    title: 'Beautiful and dramatic Antelope Canyon',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/UYiroysl.jpg',
+    title: 'Alameda Avenue',
+    subtitle: '2003 Berklay, CA 9432',
+    illustration: 'https://i.pinimg.com/736x/af/bd/02/afbd02e8adf355aa66fb98bd490c2801.jpg',
   },
   {
     title: 'Earlier this morning, NYC',
@@ -70,9 +70,16 @@ export const MyCarousel: React.FC = () => {
           parallaxFactor={0.4}
           {...parallaxProps}
         />
-        <Text style={styles.title} numberOfLines={2}>
-          {item.title}
-        </Text>
+        <View style={styles.textArea}>
+          <Text style={styles.title} numberOfLines={2}>
+            {item.title}
+          </Text>
+          <Text style={styles.subtitle} numberOfLines={2}>
+            {item.subtitle}
+          </Text>
+        </View>
+
+        <View style={styles.linearGradient} />
       </View>
     );
   };
@@ -101,22 +108,40 @@ const styles = StyleSheet.create({
   },
   item: {
     width: screenWidth - 60,
-    height: screenWidth - 60,
+    height: screenWidth - 10,
   },
   imageContainer: {
     flex: 1,
-    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
+    position: 'relative',
+    marginBottom: Platform.select({ ios: 0, android: 1 }),
     backgroundColor: 'white',
-    borderRadius: 8,
+    borderRadius: 16,
   },
   image: {
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'cover',
   },
+  textArea: {
+    position: 'absolute',
+    bottom: 0,
+    padding: 24
+  },
   title: {
     paddingTop: 10,
-    fontSize: 16,
+    fontSize: 24,
+    color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center',
   },
+  subtitle: {
+    fontSize: 16,
+    fontWeight: 'semibold',
+    color: 'white',
+    opacity: 0.7
+  },
+  linearGradient: {
+    position: 'absolute',
+    borderRadius: 8,
+    backgroundColor: 'black',
+    opacity: 0.7,
+  }
 });
