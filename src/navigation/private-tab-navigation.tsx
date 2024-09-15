@@ -3,6 +3,7 @@ import { Text } from "react-native";
 import Feather from '@expo/vector-icons/Feather';
 import Octicons from '@expo/vector-icons/Octicons';
 import { Home } from "~/screens/private/home/view";
+import { ExplorerView } from "~/screens/private/explorer/view";
 
 export type PrivateRootList = {
   home: undefined;
@@ -48,7 +49,7 @@ export const PrivateTabNavigation = () => {
       />
       <Tab.Screen
         name="explorer"
-        component={Explorer}
+        component={ExplorerView}
         options={{
           tabBarIcon: ({ focused }) => {
             return focused ? <Feather name="search" size={24} color="black" /> : <Feather name="search" size={24} color="gray" />;
