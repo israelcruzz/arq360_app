@@ -38,7 +38,8 @@ export const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 24
+    paddingVertical: 24,
+    backgroundColor: "#FFFFFF"
   },
   header: {
     flexDirection: 'row',

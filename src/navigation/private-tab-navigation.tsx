@@ -4,6 +4,7 @@ import Feather from '@expo/vector-icons/Feather';
 import Octicons from '@expo/vector-icons/Octicons';
 import { Home } from "~/screens/private/home/view";
 import { ExplorerView } from "~/screens/private/explorer/view";
+import { ProfileView } from "~/screens/private/profile/view";
 
 export type PrivateRootList = {
   home: undefined;
@@ -13,10 +14,6 @@ export type PrivateRootList = {
 };
 
 const Tab = createBottomTabNavigator<PrivateRootList>();
-
-const Profile = () => <Text>Profile</Text>
-
-const Explorer = () => <Text>Explorer</Text>
 
 const CreateProject = () => <Text>CreateProject</Text>
 
@@ -31,7 +28,7 @@ export const PrivateTabNavigation = () => {
         backgroundColor: '#fff',
         elevation: 0,
         shadowOpacity: 0,
-        borderTopWidth: 0,
+        borderTopWidth: 1,
         borderWidth: 1,
         borderColor: '#E8ECF4',
         height: 72,
@@ -69,7 +66,7 @@ export const PrivateTabNavigation = () => {
       />
       <Tab.Screen
         name="profile"
-        component={Profile}
+        component={ProfileView}
         options={{
           tabBarIcon: ({ focused }) => {
             return focused ? <Feather name="user" size={24} color="black" /> : <Feather name="user" size={24} color="gray" />;
