@@ -2,6 +2,7 @@
   "name": "arq360_app",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "npx patch-package",
     "start": "expo start --dev-client",
     "ios": "expo run:ios",
     "test": "jest",
