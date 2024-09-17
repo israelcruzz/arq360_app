@@ -22,12 +22,19 @@ export const ExplorerView = () => {
   const [addedClientImage, setAddedClientImage] = useState<string | null>('');
 
   const validateFormSchemaClient = Yup.object().shape({
-    name: Yup.string().min(3, 'O nome deve ter pelo menos 3 caracteres').required('Campo obrigatório'),
+    name: Yup.string()
+      .min(3, 'O nome deve ter pelo menos 3 caracteres')
+      .required('Campo obrigatório'),
   })
 
   type SubmitFormValidateDataClient = Yup.InferType<typeof validateFormSchemaClient>;
 
-  const { control, handleSubmit, formState: { errors } } = useForm<SubmitFormValidateDataClient>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<SubmitFormValidateDataClient>({
     resolver: yupResolver(validateFormSchemaClient),
     defaultValues: {
       name: '',
@@ -60,6 +67,28 @@ export const ExplorerView = () => {
     if (!result.canceled) {
       setAddedClientImage(result.assets[0].uri)
     }
+  }
+
+  const handleDesactiveRemoveClientModal = () => {
+    setRemoveClientModal(false);
+  }
+
+  const handleDesactiveAddClientModal = () => {
+    setAddClientModal(false);
+    reset();
+    setAddedClientImage(null);
+  }
+
+  const handleRemoveAddedClientImage = () => {
+    setAddedClientImage(null);
+  }
+
+  const handleActiveAddClientModal = () => {
+    setAddClientModal(true);
+  }
+
+  const handleActiveRemoveClientModal = () => {
+    setRemoveClientModal(true);
   }
 
   return (
@@ -134,7 +163,7 @@ export const ExplorerView = () => {
                   </Input>
                 </View>
 
-                <TouchableOpacity style={styles.addClientButton} onPress={() => setAddClientModal(true)}>
+                <TouchableOpacity style={styles.addClientButton} onPress={handleActiveAddClientModal}>
                   <Feather name="plus" size={24} color="#FFFFFF" />
                 </TouchableOpacity>
               </View>
@@ -142,7 +171,7 @@ export const ExplorerView = () => {
               <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.projectArea}>
                 {
                   Array.from({ length: 10 }).map((_, index) => {
-                    return <ClientLine onPress={() => setRemoveClientModal(true)} imageUri="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" name="Vanessa Lopes C." key={`@arq360/client-line-${index}-${new Date()}`} />
+                    return <ClientLine onPress={handleActiveRemoveClientModal} imageUri="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" name="Vanessa Lopes C." key={`@arq360/client-line-${index}-${new Date()}`} />
                   })
                 }
               </ScrollView>
@@ -151,7 +180,7 @@ export const ExplorerView = () => {
                 animationType="fade"
                 transparent
                 visible={addClientModal}
-                onRequestClose={() => setAddClientModal(false)}>
+                onRequestClose={handleDesactiveAddClientModal}>
                 <View style={styles.modalOverlay}>
                   <View style={styles.modalContent}>
                     <Text style={styles.modalText}>Criar Cliente</Text>
@@ -176,7 +205,7 @@ export const ExplorerView = () => {
                             <View style={{ width: 64, height: 64, borderRadius: 999 }}>
                               <Image source={{ uri: addedClientImage }} style={{ width: 64, height: 64, borderRadius: 999 }} />
                               <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 999, backgroundColor: '#000000', padding: 4 }}>
-                                <Feather name="x" size={18} color="#FFFFFF" onPress={() => setAddedClientImage(null)} />
+                                <Feather name="x" size={18} color="#FFFFFF" onPress={handleRemoveAddedClientImage} />
                               </TouchableOpacity>
                             </View>
                           ) : (
@@ -185,13 +214,11 @@ export const ExplorerView = () => {
                             </TouchableOpacity>
                           )
                         }
-
                       </View>
                     </View>
-
                     <View style={{ width: '100%', gap: 12 }}>
                       <Button onPress={handleSubmit(handleSubmitClientForm)} text="Criar" />
-                      <Button text="Voltar" variant="secondary" onPress={() => setAddClientModal(false)} />
+                      <Button text="Voltar" variant="secondary" onPress={handleDesactiveAddClientModal} />
                     </View>
                   </View>
                 </View>
@@ -201,13 +228,13 @@ export const ExplorerView = () => {
                 animationType="fade"
                 transparent
                 visible={removeClientModal}
-                onRequestClose={() => setRemoveClientModal(false)}>
+                onRequestClose={handleDesactiveRemoveClientModal}>
                 <View style={styles.modalOverlay}>
                   <View style={styles.modalContent}>
                     <Text style={styles.modalText}>Você deseja excluir este cliente?</Text>
                     <View style={{ width: '100%', gap: 12 }}>
                       <Button text="Excluir" />
-                      <Button text="Voltar" variant="secondary" onPress={() => setRemoveClientModal(false)} />
+                      <Button text="Voltar" variant="secondary" onPress={handleDesactiveRemoveClientModal} />
                     </View>
                   </View>
                 </View>
