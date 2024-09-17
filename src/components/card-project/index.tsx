@@ -1,17 +1,17 @@
 import { FontAwesome6 } from "@expo/vector-icons"
-import { Image, Text, TouchableOpacity, View } from "react-native"
+import { Image, Text, TouchableOpacity, TouchableOpacityProps, View } from "react-native"
 
 import { styles } from "./styles"
 
-interface CardProjectProps {
+interface CardProjectProps extends TouchableOpacityProps {
   imageUri: string,
   title: string,
   locate: string
 }
 
-export const CardProject = ({ imageUri, title, locate }: CardProjectProps) => {
+export const CardProject = ({ imageUri, title, locate, ...props }: CardProjectProps) => {
   return (
-    <TouchableOpacity style={styles.cardProjectArea}>
+    <TouchableOpacity style={styles.cardProjectArea} {...props}>
       <Image style={styles.cardProjectAreaImage} source={{ uri: imageUri }} />
 
       <View>

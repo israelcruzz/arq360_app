@@ -2,6 +2,7 @@ import { Feather, FontAwesome6 } from "@expo/vector-icons";
 import { useState } from "react";
 import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { CardProject } from "~/components/card-project";
+import { ClientLine } from "~/components/client-line";
 import { HeadingText } from "~/components/heading-text";
 import { Input } from "~/components/input";
 // import WebView from "react-native-webview";
@@ -67,34 +68,33 @@ export const ExplorerView = () => {
         <Input onChangeText={handleChangeTextQuery} placeholder="Pesquisar">
           <Feather name="search" size={24} color="#828282" />
         </Input>
+        {
+          activeBadge === 'projects' ? (
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.projectArea}>
+              {
+                Array.from({ length: 10 }).map((_, index) => {
+                  return (
+                    <CardProject
+                      key={`@arq360/card-project-${index}`}
+                      imageUri="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      locate="São Paulo, SP"
+                      title="Apartamento DBZ"
+                    />
+                  )
+                })
+              }
 
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.projectArea}>
-          <CardProject
-            imageUri="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            locate="São Paulo, SP"
-            title="Apartamento DBZ"
-          />
-          <CardProject
-            imageUri="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            locate="São Paulo, SP"
-            title="Apartamento DBZ"
-          />
-          <CardProject
-            imageUri="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            locate="São Paulo, SP"
-            title="Apartamento DBZ"
-          />
-          <CardProject
-            imageUri="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            locate="São Paulo, SP"
-            title="Apartamento DBZ"
-          />
-          <CardProject
-            imageUri="https://plus.unsplash.com/premium_photo-1661962841993-99a07c27c9f4?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            locate="São Paulo, SP"
-            title="Apartamento DBZ"
-          />
-        </ScrollView>
+            </ScrollView>
+          ) : (
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.projectArea}>
+              {
+                Array.from({ length: 10 }).map((_, index) => {
+                  return <ClientLine imageUri="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" name="Vanessa Lopes C." key={`@arq360/client-line-${index}-${new Date()}`} />
+                })
+              }
+            </ScrollView>
+          )
+        }
       </View>
     </View>
     // <WebView
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   projectArea: {
-    paddingBottom: 200, 
-    paddingTop: 24, 
+    paddingBottom: 200,
+    paddingTop: 24,
     gap: 24
-  }
+  },
 });
