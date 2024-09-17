@@ -1,4 +1,4 @@
-import { Feather, FontAwesome6 } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
 import { Alert, Image, Modal, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from "react-native";
 import { Button } from "../../../components/button"
@@ -6,6 +6,11 @@ import { CardProject } from "~/components/card-project";
 import { ClientLine } from "~/components/client-line";
 import { HeadingText } from "~/components/heading-text";
 import { Input } from "~/components/input";
+import * as Yup from 'yup';
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Label } from "~/components/label";
+import * as ImagePicker from 'expo-image-picker';
 // import WebView from "react-native-webview";
 
 type BadgeType = 'projects' | 'clients'
@@ -14,6 +19,24 @@ export const ExplorerView = () => {
   const [activeBadge, setActiveBadge] = useState<BadgeType>('projects');
   const [addClientModal, setAddClientModal] = useState<boolean>(false);
   const [removeClientModal, setRemoveClientModal] = useState<boolean>(false);
+  const [addedClientImage, setAddedClientImage] = useState<string | null>('');
+
+  const validateFormSchemaClient = Yup.object().shape({
+    name: Yup.string().min(3, 'O nome deve ter pelo menos 3 caracteres').required('Campo obrigatório'),
+  })
+
+  type SubmitFormValidateDataClient = Yup.InferType<typeof validateFormSchemaClient>;
+
+  const { control, handleSubmit, formState: { errors } } = useForm<SubmitFormValidateDataClient>({
+    resolver: yupResolver(validateFormSchemaClient),
+    defaultValues: {
+      name: '',
+    }
+  })
+
+  const handleSubmitClientForm = (data: SubmitFormValidateDataClient) => {
+    Alert.alert(data.name)
+  }
 
   const handleChangeTextQuery = (query: string) => {
     if (!query.trim()) return;
@@ -24,6 +47,19 @@ export const ExplorerView = () => {
     setActiveBadge((prev) => {
       return prev === 'projects' ? 'clients' : 'projects'
     })
+  }
+
+  const handlePickerClientImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      base64: true,
+      aspect: [4, 4],
+      quality: 1,
+      allowsEditing: true
+    })
+
+    if (!result.canceled) {
+      setAddedClientImage(result.assets[0].uri)
+    }
   }
 
   return (
@@ -118,9 +154,43 @@ export const ExplorerView = () => {
                 onRequestClose={() => setAddClientModal(false)}>
                 <View style={styles.modalOverlay}>
                   <View style={styles.modalContent}>
-                    <Text style={styles.modalText}>Hello World!</Text>
+                    <Text style={styles.modalText}>Criar Cliente</Text>
+
+                    <View style={{ width: '100%', gap: 8 }}>
+                      <View>
+                        <Label title="Nome" />
+                        <Controller
+                          control={control}
+                          name="name"
+                          render={({ field: { onChange, value } }) => (
+                            <Input onChangeText={onChange} value={value} placeholder="Nome" />
+                          )}
+                        />
+                        {errors.name && <Text style={styles.errorText}>{errors.name.message}</Text>}
+                      </View>
+
+                      <View>
+                        <Label title="Imagem (Opcional)" />
+                        {
+                          addedClientImage ? (
+                            <View style={{ width: 64, height: 64, borderRadius: 999 }}>
+                              <Image source={{ uri: addedClientImage }} style={{ width: 64, height: 64, borderRadius: 999 }} />
+                              <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 999, backgroundColor: '#000000', padding: 4 }}>
+                                <Feather name="x" size={18} color="#FFFFFF" onPress={() => setAddedClientImage(null)} />
+                              </TouchableOpacity>
+                            </View>
+                          ) : (
+                            <TouchableOpacity onPress={handlePickerClientImage} style={{ width: 64, height: 64, borderRadius: 999, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#E8ECF4' }}>
+                              <Feather name="plus" size={24} color="#000000" />
+                            </TouchableOpacity>
+                          )
+                        }
+
+                      </View>
+                    </View>
+
                     <View style={{ width: '100%', gap: 12 }}>
-                      <Button text="Criar" />
+                      <Button onPress={handleSubmit(handleSubmitClientForm)} text="Criar" />
                       <Button text="Voltar" variant="secondary" onPress={() => setAddClientModal(false)} />
                     </View>
                   </View>
@@ -136,7 +206,7 @@ export const ExplorerView = () => {
                   <View style={styles.modalContent}>
                     <Text style={styles.modalText}>Você deseja excluir este cliente?</Text>
                     <View style={{ width: '100%', gap: 12 }}>
-                      <Button text="Criar" />
+                      <Button text="Excluir" />
                       <Button text="Voltar" variant="secondary" onPress={() => setRemoveClientModal(false)} />
                     </View>
                   </View>
@@ -220,9 +290,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 16,
     alignItems: 'center',
+    gap: 24
   },
   modalText: {
-    fontSize: 18,
-    marginBottom: 20,
+    fontWeight: 'bold',
+    fontSize: 20,
+    alignSelf: 'flex-start'
+  },
+  errorText: {
+    color: 'red',
+    marginTop: 8
   },
 });
