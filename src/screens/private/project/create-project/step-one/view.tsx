@@ -75,7 +75,7 @@ export const CreateProjectStepOneView = () => {
         setValue('city', response.data.localidade);
         setValue('neighborhood', response.data.bairro);
 
-        await trigger(['address', 'city', 'neighborhood']); 
+        await trigger(['address', 'city', 'neighborhood']);
       }
 
     } catch (error) {
@@ -313,15 +313,15 @@ export const CreateProjectStepOneView = () => {
             {
               coverImageProject ? (
                 <View style={styles.coverImageArea}>
-                <Image
-                  width={128 + 98}
-                  height={128 + 16}
-                  borderRadius={16}
-                  source={{ uri: coverImageProject }}
-                />
+                  <Image
+                    width={128 + 98}
+                    height={128 + 16}
+                    borderRadius={16}
+                    source={{ uri: coverImageProject }}
+                  />
                   <TouchableOpacity style={styles.dropCoverImageButton} onPress={handleRemoveCoverImage}>
                     <Feather name="x" size={16} color="white" />
-                </TouchableOpacity>
+                  </TouchableOpacity>
                 </View>
               ) : (
                 <View style={styles.coverImageAreaDesactive}>

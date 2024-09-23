@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
-import { Alert, Image, Modal, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from "react-native";
+import { Alert, Image, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Button } from "../../../components/button"
 import { CardProject } from "~/components/card-project";
 import { ClientLine } from "~/components/client-line";
