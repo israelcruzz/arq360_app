@@ -1,4 +1,4 @@
-import { Alert, Image, Modal, Text, TouchableOpacity, View } from "react-native"
+import { Alert, Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { BackButton } from "~/components/back-button"
 import { HeadingText } from "~/components/heading-text"
@@ -12,7 +12,7 @@ import { useState } from "react"
 import { Feather } from "@expo/vector-icons"
 import { Button } from "~/components/button"
 import * as ImagePicker from 'expo-image-picker'
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { ConvenientLine } from "~/components/convenient-line"
 
 export enum RoomType {
   LivingRoom = 'livingRoom',
@@ -21,7 +21,7 @@ export enum RoomType {
   Bathroom = 'bathroom',
 }
 
-interface IConvenient {
+export interface IConvenient {
   type: RoomType;
   image360Uri: string;
   coverImage: string
@@ -101,14 +101,13 @@ export const CreateProjectStepTwoView = () => {
             <DescriptionText text="Your new password must be unique from those previously used." />
           </View>
 
-          {
-            convenientList.length > 0 && convenientList.map((convenient, index) => (
-              <TouchableOpacity key={`@arq360/convenient-card/${index}-${new Date()}`} style={styles.convenientCard}>
-                <Text>{convenient.type}</Text>
-                <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
-              </TouchableOpacity>
-            ))
-          }
+          <View style={{ gap: 24 }}>
+            {convenientList.length > 0 &&
+              convenientList.map((convenient, index) => (
+                <ConvenientLine key={`@arq360/convenient-${index}-${new Date()}`} coverImage={convenient.coverImage} image360Uri={convenient.image360Uri} type={convenient.type} />
+              ))
+            }
+          </View>
         </View>
       </View>
 
