@@ -109,7 +109,12 @@ export const CreateProjectStepTwoView = () => {
             }
           </View>
         </View>
+
       </View>
+
+      {
+        convenientList.length === 0 && <Image source={require('../../../../../assets/images/warning.png')} width={200} height={200} />
+      }
 
       <Modal
         animationType="fade"
@@ -193,7 +198,7 @@ export const CreateProjectStepTwoView = () => {
         </View>
       </Modal>
 
-      <View>
+      <View style={{ gap: 24 }}>
         <Button text="Criar Cômodo" variant="secondary" onPress={handleActiveAddConvenientModal} />
         <Button text="Próximo" variant="primary" onPress={handleSubmit(handleSubmitForm)} />
       </View>
