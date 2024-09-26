@@ -42,7 +42,9 @@ export const ExplorerView = () => {
   })
 
   const handleSubmitClientForm = (data: SubmitFormValidateDataClient) => {
-    Alert.alert(data.name)
+    Alert.alert(data.name);
+    reset();
+    setAddedClientImage(null);
   }
 
   const handleChangeTextQuery = (query: string) => {
@@ -155,13 +157,13 @@ export const ExplorerView = () => {
             </>
 
           ) : (
-            <>
-              <View style={styles.searchClientArea}>
-                <View style={{ flex: 1 }}>
-                  <Input onChangeText={handleChangeTextQuery} placeholder="Pesquisar">
-                    <Feather name="search" size={24} color="#828282" />
-                  </Input>
-                </View>
+          <>
+            <View style={styles.searchClientArea}>
+              <View style={{ flex: 1 }}>
+                <Input onChangeText={handleChangeTextQuery} placeholder="Pesquisar">
+                  <Feather name="search" size={24} color="#828282" />
+                </Input>
+              </View>
 
                 <TouchableOpacity style={styles.addClientButton} onPress={handleActiveAddClientModal}>
                   <Feather name="plus" size={24} color="#FFFFFF" />
