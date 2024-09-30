@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     gap: 4,
   },
   textInput: {
-    flex: 1
+    flex: 1,
   },
   inputError: {
     borderColor: '#ff0000'

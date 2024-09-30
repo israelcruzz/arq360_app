@@ -7,10 +7,10 @@ export interface InputProps extends TextInputProps {
   isErrorValidate?: boolean;
 }
 
-export const Input = ({ children, isErrorValidate, ...props }: InputProps) => {
+export const Input = ({ children, isErrorValidate, style, ...props }: InputProps) => {
   return (
     <View style={[styles.inputArea, isErrorValidate && styles.inputError]}>
-      <TextInput {...props} style={styles.textInput} />
+      <TextInput {...props} style={[styles.textInput, style]} />
       {children}
     </View>
   );

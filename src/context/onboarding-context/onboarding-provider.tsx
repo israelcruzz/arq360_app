@@ -8,14 +8,19 @@ export interface IOnboardingProvider {
 
 export const OnboardingProvider = ({ children }: IOnboardingProvider) => {
   const [isOnboardingComplete, setIsOnboardingComplete] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   
   useEffect(() => {
     const verifyIsBoardComplete = async () => {
+      setIsLoading(true);
+
       try {
         const verify = await AsyncStorage.getItem('@arq360/onboarding');
         setIsOnboardingComplete(verify !== null ? JSON.parse(verify) : false);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
+        setIsLoading(false);
       }
     }
 
@@ -32,7 +37,7 @@ export const OnboardingProvider = ({ children }: IOnboardingProvider) => {
   }
 
   return (
-    <OnboardingContext.Provider value={{ isOnboardingComplete, save }}>
+    <OnboardingContext.Provider value={{ isOnboardingComplete, save, isLoading }}>
       {children}
     </OnboardingContext.Provider>
   )
