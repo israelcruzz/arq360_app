@@ -66,5 +66,46 @@ export const styles = StyleSheet.create({
   },
   contentArea: {
     padding: 24
+  },
+  clientImage: {
+    width: 48,
+    height: 48,
+    borderRadius: 999,
+    objectFit: "cover"
+  },
+  clientNameText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000000"
+  },
+  clientDetailsText: {
+    fontSize: 14,
+    fontWeight: "medium",
+    color: "#717173"
+  },
+  clientAreaInfos: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  clientArea: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E6E6E6",
+    borderRadius: 16,
+    padding: 12
+  },
+  clientAreaButtonMessage: {
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#F4F5F6'
+  },
+  blockClientArea: {
+    gap: 12
   }
 })
