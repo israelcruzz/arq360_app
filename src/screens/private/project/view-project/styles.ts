@@ -1,10 +1,15 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: "#FFFFFF"
+  },
+  scrollViewArea: {
+    flexGrow: 1,
+    paddingBottom: 160
   },
   imageArea: {
     width: "100%",
@@ -58,11 +63,14 @@ export const styles = StyleSheet.create({
     color: "#717173",
   },
   convenientArea: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#D1D1D1",
     padding: 24,
-    gap: 16
+    gap: 24
   },
   contentArea: {
     padding: 24
@@ -97,6 +105,15 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 12
   },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "90%",
+    opacity: 1,
+    borderRadius: 16,
+  },
   clientAreaButtonMessage: {
     borderRadius: 12,
     justifyContent: 'center',
@@ -106,6 +123,97 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F4F5F6'
   },
   blockClientArea: {
+    marginTop: 24,
+    marginBottom: 24,
     gap: 12
+  },
+  boxAreaContainer: {
+    flexDirection: "row",
+    gap: 24,
+  },
+  boxArea: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center"
+  },
+  boxAreaIcon: {
+    width: 46,
+    height: 46,
+    borderRadius: 8,
+    backgroundColor: "#23262F",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  boxAreaTextHeading: {
+    color: "#808080",
+    fontSize: 14,
+    fontWeight: "semibold"
+  },
+  boxAreaTextInfo: {
+    color: "#141416",
+    fontSize: 16,
+    fontWeight: "bold"
+  },
+  descriptionProjectText: {
+    color: "#828282",
+    fontSize: 16,
+    fontWeight: "regular"
+  },
+  mapContainer: {
+    width: "100%",
+    height: 200,
+    borderRadius: 16
+  },
+  blockDescriptionArea: {
+    marginBottom: 24,
+    gap: 12
+  },
+  locationArea: {
+    gap: 12
+  },
+  bottomSheetArea: {
+    padding: 24
+  },
+  bottomSheet: {
+    borderWidth: 1,
+    borderColor: "#D1D1D1",
+    borderRadius: 16,
+  },
+  convenientBoxArea: {
+    flexDirection: "row",
+    gap: 12,
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  convenientBox: {
+    flexDirection: "row",
+    gap: 12,
+    alignItems: "center",
+  },
+  convenientImageCard: {
+    width: 86,
+    height: 56,
+    borderRadius: 12,
+    borderWidth: 1,
+    objectFit: "cover"
+  },
+  convenientText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000000"
+  },
+  convenientListArea: {
+    marginTop: 24,
+    gap: 16
+  },
+  buttonEdit: {
+    borderWidth: 1,
+    borderColor: '#E8ECF4',
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#FFFFFF'
   }
 })
