@@ -43,7 +43,20 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.israelcruzz.arq360_app"
+      "package": "com.israelcruzz.arq360_app",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBDWXp2Eh6oKg05mIJO-YSCvr5_1td3ZrU"
+        }
+      },
+      "extra": {
+        "eas": {
+          "projectId": "1c4d9ab5-f42a-4226-9170-e8944773bcc9"
+        }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "extra": {
       "eas": {

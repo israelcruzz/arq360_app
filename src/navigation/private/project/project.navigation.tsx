@@ -1,5 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Text } from "react-native";
+import 'react-native-reanimated';
+import { ViewProjectView } from "~/screens/private/project/view-project/view";
 
 export type ProjectRootList = {
   viewProject: undefined;
@@ -7,16 +8,12 @@ export type ProjectRootList = {
 
 const Stack = createStackNavigator<ProjectRootList>();
 
-const viewProject = () => {
-  return <Text>Olá</Text>
-}
-
 export const ProjectNavigation = () => {
   return (
     <Stack.Navigator
       initialRouteName="viewProject"
       screenOptions={{ animationEnabled: false, headerShown: false }}>
-      <Stack.Screen name="viewProject" component={viewProject} />
+      <Stack.Screen name="viewProject" component={ViewProjectView} />
     </Stack.Navigator>
   )
 }
