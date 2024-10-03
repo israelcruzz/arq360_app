@@ -1,21 +1,22 @@
 import 'react-native-reanimated';
 import * as Linking from 'expo-linking';
-import { useMemo, useRef } from "react";
-import { Button, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { useMemo, useRef, useState } from "react";
+import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import BottomSheet, { BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { styles } from './styles';
 import { BackButton } from '~/components/back-button';
-import { Button as Btn } from "../../../../components/button";
+import { Button as Btn, Button } from "../../../../components/button";
 import { HeadingText } from '~/components/heading-text';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { Bath, Pencil, Ruler } from "lucide-react-native"
+import { Bath, Edit, Ruler, Settings, Trash, X } from "lucide-react-native";
 import MapView from 'react-native-maps';
 import { LinearGradient } from "expo-linear-gradient";
 
 export const ViewProjectView = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['100', '50'], []);
+  const [settingProjectMenuVisible, setSettingProjectMenuVisible] = useState<boolean>(false);
 
   const handleCloseBottomSheet = () => {
     bottomSheetRef.current?.close();
@@ -27,6 +28,14 @@ export const ViewProjectView = () => {
 
   const handleClickInButtonToSendMessage = () => {
     Linking.openURL("https://Wa.me/5511985376628");
+  }
+
+  const handleSettingProjectMenuVisible = () => {
+    setSettingProjectMenuVisible(true);
+  }
+
+  const handleSettingProjectMenuInvisible = () => {
+    setSettingProjectMenuVisible(false);
   }
 
   return (
@@ -49,9 +58,35 @@ export const ViewProjectView = () => {
             </View>
 
             <View style={styles.buttonEditArea}>
-              <View style={styles.buttonEdit}>
-                <Pencil size={20} color="#2A2A2A" />
-              </View>
+              <TouchableOpacity activeOpacity={0.9} onPress={handleSettingProjectMenuVisible} style={styles.buttonEdit}>
+                <Settings size={20} color="#2A2A2A" />
+              </TouchableOpacity>
+
+              <Modal
+                animationType="fade"
+                transparent
+                visible={settingProjectMenuVisible}
+              >
+                <View style={styles.modalOverlay}>
+                  <View style={styles.modalContent}>
+                    <View style={styles.textConfigArea}>
+                      <Text style={styles.configText}>Configurações</Text>
+                      <TouchableOpacity activeOpacity={0.9} onPress={handleSettingProjectMenuInvisible}>
+                        <X size={20} color="#2A2A2A" />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.divider} />
+                    <TouchableOpacity style={styles.optProjArea}>
+                      <Edit size={20} color="#2A2A2A" />
+                      <Text style={styles.modalText}>Editar</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optProjArea}>
+                      <Trash size={20} color="#2A2A2A" />
+                      <Text style={styles.modalText}>Excluir</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </Modal>
             </View>
 
             <View style={styles.textImageArea}>
@@ -74,7 +109,7 @@ export const ViewProjectView = () => {
                   </View>
                 </View>
 
-                <TouchableOpacity style={styles.clientAreaButtonMessage} onPress={handleClickInButtonToSendMessage}>
+                <TouchableOpacity activeOpacity={0.9} style={styles.clientAreaButtonMessage} onPress={handleClickInButtonToSendMessage}>
                   <MaterialCommunityIcons name="message-text" size={20} color="#353945" />
                 </TouchableOpacity>
               </View>

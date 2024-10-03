@@ -215,5 +215,45 @@ export const styles = StyleSheet.create({
     width: 40,
     height: 40,
     backgroundColor: '#FFFFFF'
+  },
+  modalOverlay: {
+    flex: 1,
+    position: "absolute",
+    top: 0,
+    right: 0,
+    marginHorizontal: 48,
+    marginVertical: 96
+  },
+  modalContent: {
+    borderWidth: 1,
+    borderColor: '#E8ECF4',
+    width: 220,
+    padding: 16,
+    backgroundColor: 'white',
+    borderRadius: 16,
+    gap: 12
+  },
+  modalText: {
+    fontWeight: 'regular',
+    fontSize: 16,
+  },
+  optProjArea: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  divider: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#D1D1D1",
+    
+  },
+  configText: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  textConfigArea: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   }
 })
