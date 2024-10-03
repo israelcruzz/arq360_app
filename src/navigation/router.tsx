@@ -22,7 +22,7 @@ export const Router = () => {
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       {isOnboardingComplete ? (
         isUserExists ? (
-          <CreateProjectNavigation />
+          <PrivateTabNavigation />
         ) : (
           <AuthNavigation />
         )

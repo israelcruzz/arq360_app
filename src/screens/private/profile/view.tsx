@@ -3,6 +3,41 @@ import { styles } from "./styles"
 import { Feather } from "@expo/vector-icons"
 import { useState } from "react"
 import * as ImagePicker from 'expo-image-picker';
+import { CreditCard, LockKeyhole, LogOut, LucideIcon, Moon, UserPen } from "lucide-react-native";
+
+interface IProfileOptions {
+  name: string;
+  to: string;
+  icon: LucideIcon;
+}
+
+const PROFILE_OPTIONS: IProfileOptions[] = [
+  {
+    name: 'Editar Informações',
+    to: '/',
+    icon: UserPen
+  },
+  {
+    name: 'Editar Senha',
+    to: '/',
+    icon: LockKeyhole
+  },
+  {
+    name: 'Tema',
+    to: '/',
+    icon: Moon
+  },
+  {
+    name: 'Assinatura',
+    to: '/',
+    icon: CreditCard
+  },
+  {
+    name: 'Sair',
+    to: '/',
+    icon: LogOut
+  }
+]
 
 export const ProfileView = () => {
   const [image, setImage] = useState<string>('https://github.com/israelcruzz.png');
@@ -15,7 +50,7 @@ export const ProfileView = () => {
       allowsEditing: true
     })
 
-    if(!result.canceled) {
+    if (!result.canceled) {
       setImage(result.assets[0].uri);
       ToastAndroid.show('Imagem selecionada', ToastAndroid.SHORT)
     }
@@ -51,14 +86,14 @@ export const ProfileView = () => {
       </View>
 
       <View style={styles.optionsArea}>
-        {new Array(6).fill(0).map((_, index) => (
+        {PROFILE_OPTIONS.map((option, index) => (
           <TouchableOpacity key={index} style={styles.optionArea}>
             <View style={styles.optionViewArea}>
               <View style={styles.optionIconArea}>
-                <Feather name="user" size={24} color="black" />
+                <option.icon size={24} color="black" />
               </View>
 
-              <Text>Edit Profile</Text>
+              <Text>{option.name}</Text>
             </View>
 
             <Feather name="chevron-right" size={24} color="#636264" />
