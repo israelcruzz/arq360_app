@@ -40,8 +40,7 @@ export const ExplorerView = () => {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
-    watch
+    reset
   } = useForm<SubmitFormValidateDataClient>({
     resolver: yupResolver(validateFormSchemaClient),
     defaultValues: {
@@ -52,18 +51,18 @@ export const ExplorerView = () => {
 
 
   const formatInputPhone = (text: string) => {
-    const cleaned = text.replace(/\D/g, ''); // Remove caracteres não numéricos
-    const match = cleaned.match(/^(\d{2})(\d{0,5})(\d{0,4})$/); // Captura DDD e os números
+    const cleaned = text.replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{2})(\d{0,5})(\d{0,4})$/);
 
     if (match) {
-      const ddd = `(${match[1]})`; // Formata o DDD com parênteses
-      const firstPart = match[2]; // Primeira parte do número (até 5 dígitos)
-      const secondPart = match[3]; // Segunda parte do número (até 4 dígitos)
+      const ddd = `(${match[1]})`;
+      const firstPart = match[2]; 
+      const secondPart = match[3];
 
       return `${ddd} ${firstPart}${firstPart.length === 5 ? '' : '9'}${secondPart.length > 0 ? '-' + secondPart : ''}`.trim();
     }
 
-    return cleaned; // Retorna o número limpo se não houver correspondência
+    return cleaned; 
   };
 
 
