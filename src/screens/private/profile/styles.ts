@@ -94,4 +94,23 @@ export const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    width: 400,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 16,
+    alignItems: 'center',
+    gap: 24
+  },
+  modalText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center'
+  },
 })
