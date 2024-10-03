@@ -1,17 +1,17 @@
-import 'react-native-reanimated';
 import * as Linking from 'expo-linking';
 import { useMemo, useRef, useState } from "react";
 import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetView, useBottomSheetTimingConfigs } from '@gorhom/bottom-sheet';
 import { styles } from './styles';
 import { BackButton } from '~/components/back-button';
-import { Button as Btn, Button } from "../../../../components/button";
+import { Button as Btn } from "../../../../components/button";
 import { HeadingText } from '~/components/heading-text';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Bath, Edit, Ruler, Settings, Trash, X } from "lucide-react-native";
 import MapView from 'react-native-maps';
 import { LinearGradient } from "expo-linear-gradient";
+import { Easing } from 'react-native-reanimated';
 
 export const ViewProjectView = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -37,6 +37,11 @@ export const ViewProjectView = () => {
   const handleSettingProjectMenuInvisible = () => {
     setSettingProjectMenuVisible(false);
   }
+
+  const animationConfigs = useBottomSheetTimingConfigs({
+    duration: 250,
+    easing: Easing.exp,
+  });
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -178,6 +183,7 @@ export const ViewProjectView = () => {
         ref={bottomSheetRef}
         enablePanDownToClose
         index={1}
+        animationConfigs={animationConfigs}
         style={styles.bottomSheet}
       >
         <BottomSheetView style={styles.bottomSheetArea}>
