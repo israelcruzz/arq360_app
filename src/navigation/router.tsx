@@ -3,8 +3,6 @@ import AuthNavigation from './auth.navigation';
 import OnboardingNavigation from './onboarding-navigator';
 import { useOnboarding } from '~/hooks/onboarding-hooks/useOnboarding';
 import { PrivateTabNavigation } from './private-tab-navigation';
-import { CreateProjectNavigation } from './private/project/create-project.navigation';
-import { ProjectNavigation } from './private/project/project.navigation';
 
 export const Router = () => {
   const { isOnboardingComplete, isLoading } = useOnboarding();
@@ -23,7 +21,7 @@ export const Router = () => {
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       {isOnboardingComplete ? (
         isUserExists ? (
-          <ProjectNavigation />
+          <PrivateTabNavigation />
         ) : (
           <AuthNavigation />
         )
