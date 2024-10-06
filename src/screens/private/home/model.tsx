@@ -29,8 +29,14 @@ export const useHome = () => {
     navigator.navigate('tabs', { screen: 'profile' });
   };
 
+  const handleClickSeeAll = () => {
+    // @ts-ignore
+    navigator.navigate('tabs', { screen: 'explorer' });
+  }
+
   return {
     handleClickAvatar,
+    handleClickSeeAll,
     address,
   };
 };

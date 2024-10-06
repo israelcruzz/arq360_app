@@ -10,6 +10,7 @@ import { useHome } from './model';
 export const HomeView = ({
   handleClickAvatar,
   address,
+  handleClickSeeAll
 }: ReturnType<typeof useHome>) => {
   return (
     <View style={styles.container}>
@@ -31,7 +32,7 @@ export const HomeView = ({
           <Text style={styles.headingText}>Projects</Text>
 
           <TouchableOpacity>
-            <Text style={styles.seeAllText}>See all</Text>
+            <Text style={styles.seeAllText} onPress={handleClickSeeAll}>Ver Todos</Text>
           </TouchableOpacity>
         </View>
       </View>
