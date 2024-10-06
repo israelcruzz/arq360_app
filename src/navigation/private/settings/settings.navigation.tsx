@@ -1,4 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { Text } from "react-native";
+import { EditInformationViewModel } from "~/screens/private/settings/edit-information/view-model";
 
 export type SettingsRootList = {
   editInformation: undefined;
@@ -8,15 +10,13 @@ export type SettingsRootList = {
 
 const Stack = createStackNavigator<SettingsRootList>();
 
-const Example = () => <h1>a</h1>
-
 export const SettingsNavigation = () => {
   return (
     <Stack.Navigator
       initialRouteName="editInformation"
       screenOptions={{ animationEnabled: false, headerShown: false }}
     >
-      <Stack.Screen name="editInformation" component={Example} />
+      <Stack.Screen name="editInformation" component={EditInformationViewModel} />
     </Stack.Navigator>
   );
 }
