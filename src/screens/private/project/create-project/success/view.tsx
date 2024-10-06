@@ -1,8 +1,12 @@
-import { Image, Text, View } from "react-native";
-import { styles } from "./styles";
+import { Image, Text, View } from 'react-native';
+import { styles } from './styles';
 import { Button } from '@/components/button';
+import { useCreateProjectStepSuccess } from './model';
 
-export const CreateProjectStepSuccessView = () => {
+export const CreateProjectStepSuccessView = ({
+  handleClickNextScreen,
+  handleClickViewProject,
+}: ReturnType<typeof useCreateProjectStepSuccess>) => {
   return (
     <View style={styles.container}>
       <View style={styles.textArea}>
@@ -12,12 +16,12 @@ export const CreateProjectStepSuccessView = () => {
         </Text>
       </View>
 
-      <Image source={require('../../../../assets/images/success.png')} style={styles.image} />
+      <Image source={require('@/assets/images/success.png')} style={styles.image} />
 
       <View style={styles.buttonsArea}>
-        <Button text="Voltar para a Home" variant="secondary" />
-        <Button text="Visualizar Projeto" />
+        <Button text="Voltar para a Home" variant="secondary" onPress={handleClickNextScreen} />
+        <Button text="Visualizar Projeto" onPress={handleClickViewProject} />
       </View>
     </View>
-  )
-}
+  );
+};

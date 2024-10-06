@@ -4,9 +4,9 @@ import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-na
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet, { BottomSheetView, useBottomSheetTimingConfigs } from '@gorhom/bottom-sheet';
 import { styles } from './styles';
-import { BackButton } from '~/components/back-button';
+import { BackButton } from '@/components/back-button';
 import { Button as Btn } from "../../../../components/button";
-import { HeadingText } from '~/components/heading-text';
+import { HeadingText } from '@/components/heading-text';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Bath, Edit, Ruler, Settings, Trash, X } from "lucide-react-native";
 import MapView from 'react-native-maps';

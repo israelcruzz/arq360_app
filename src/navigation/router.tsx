@@ -6,6 +6,7 @@ import NetInfo from '@react-native-community/netinfo';
 import { NotConnectionView } from '@/screens/not-connection/view';
 import { useEffect, useState } from 'react';
 import { PrivateTabNavigation } from "@/navigation/private-tab-navigation";
+import { AppNavigator } from './private/private.navigations';
 
 export const Router = () => {
   const { isOnboardingComplete, isLoading } = useOnboarding();
@@ -38,7 +39,7 @@ export const Router = () => {
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       {isOnboardingComplete ? (
         isUserExists ? (
-          <PrivateTabNavigation />
+          <AppNavigator />
         ) : (
           <AuthNavigation />
         )

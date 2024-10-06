@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { Image, Modal, Text, TouchableOpacity, View } from 'react-native';
-import { IConvenient } from '@/screens/private/project/create-project/step-two/view';
+import { IConvenient } from '@/screens/private/project/create-project/step-two/model';
 import { styles } from "@/components/convenient-line/styles";
 import { useState } from 'react';
 import { Button } from '@/components/button/index';
