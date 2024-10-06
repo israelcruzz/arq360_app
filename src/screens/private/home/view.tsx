@@ -5,8 +5,11 @@ import { MyCarousel } from '@/components/carousel';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { HeadingText } from '@/components/heading-text';
 import { styles } from "@/screens/private/home/styles";
+import { useHome } from './model';
 
-export const Home = () => {
+export const HomeView = ({
+  handleClickAvatar
+}: ReturnType<typeof useHome>) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -15,7 +18,7 @@ export const Home = () => {
           <Text>São Paulo, SP</Text>
         </Badge>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleClickAvatar}>
           <Image style={styles.avatar} source={{ uri: 'https://github.com/israelcruzz.png' }} />
         </TouchableOpacity>
       </View>

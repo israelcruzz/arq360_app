@@ -1,7 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home } from "@/screens/private/home/view";
-import { ExplorerView } from "@/screens/private/explorer/view";
-import { ProfileView } from "@/screens/private/profile/view";
+import { HomeViewModel } from "@/screens/private/home/view-model";
 import { CopyPlus, GalleryVerticalEnd, House, UserRound } from "lucide-react-native";
 import { CreateProjectInitialViewModel } from "@/screens/private/project/create-project/initial/view-model";
 import { ProfileViewModal } from "@/screens/private/profile/view-modal";
@@ -36,7 +34,7 @@ export const PrivateTabNavigation = () => {
     })}>
       <Tab.Screen
         name="home"
-        component={Home}
+        component={HomeViewModel}
         options={{
           tabBarIcon: ({ focused }) => {
             return focused ? <House size={24} color="black" /> : <House size={24} color="gray" />;
