@@ -8,14 +8,15 @@ import { styles } from "@/screens/private/home/styles";
 import { useHome } from './model';
 
 export const HomeView = ({
-  handleClickAvatar
+  handleClickAvatar,
+  address,
 }: ReturnType<typeof useHome>) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Badge>
           <FontAwesome6 name="location-dot" size={12} color="#666666" />
-          <Text>São Paulo, SP</Text>
+          <Text>{address}</Text>
         </Badge>
 
         <TouchableOpacity onPress={handleClickAvatar}>
