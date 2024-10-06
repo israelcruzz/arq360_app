@@ -5,6 +5,7 @@ import { ProfileView } from "@/screens/private/profile/view";
 import { CopyPlus, GalleryVerticalEnd, House, UserRound } from "lucide-react-native";
 import { CreateProjectInitialViewModel } from "@/screens/private/project/create-project/initial/view-model";
 import { ProfileViewModal } from "@/screens/private/profile/view-modal";
+import { ExplorerViewModel } from "@/screens/private/explorer/view-model";
 
 export type PrivateRootList = {
   home: undefined;
@@ -45,7 +46,7 @@ export const PrivateTabNavigation = () => {
       />
       <Tab.Screen
         name="explorer"
-        component={ExplorerView}
+        component={ExplorerViewModel}
         options={{
           tabBarIcon: ({ focused }) => {
             return focused ? <GalleryVerticalEnd size={24} color="black" /> : <GalleryVerticalEnd size={24} color="gray" />;

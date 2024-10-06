@@ -9,7 +9,7 @@ export const useCreateProjectStepSuccess = () => {
   }
 
   const handleClickViewProject = () => {
-    navigator.navigate('viewProjectFlow');
+    navigator.navigate('viewProjectFlow', { projectId: '1' });
   }
 
   return {

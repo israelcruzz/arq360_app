@@ -29,19 +29,16 @@ export const useProfile = () => {
     {
       name: 'Editar Informações',
       icon: UserPen,
-      // @ts-ignore
       interactiveFunction: () => navigator.navigate('settingsFlow', { screen: 'editInformation' }),
     },
     {
       name: 'Editar Senha',
       icon: LockKeyhole,
-      // @ts-ignore
       interactiveFunction: () => navigator.navigate('settingsFlow', { screen: 'changePassword' }),
     },
     {
       name: 'Tema',
       icon: Moon,
-      // @ts-ignore
       interactiveFunction: () => navigator.navigate('settingsFlow', { screen: 'changeTheme' }),
     },
     {
