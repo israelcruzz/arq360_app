@@ -1,7 +1,18 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Carousel, { ParallaxImage, AdditionalParallaxProps } from 'react-native-snap-carousel';
-import { View, Text, Dimensions, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { AppRootList } from '@/navigation/private/private.navigations';
+import { MapPin } from 'lucide-react-native';
 
 interface CarouselItem {
   title: string;
@@ -43,6 +54,12 @@ export const MyCarousel: React.FC = () => {
   const [entries, setEntries] = useState<CarouselItem[]>([]);
   const carouselRef = useRef<Carousel<CarouselItem>>(null);
 
+  const navigator = useNavigation<NavigationProp<AppRootList>>();
+
+  const handleClickItem = () => {
+    navigator.navigate('viewProjectFlow', { projectId: '1' });
+  };
+
   const goForward = () => {
     carouselRef.current?.snapToNext();
   };
@@ -56,7 +73,7 @@ export const MyCarousel: React.FC = () => {
     parallaxProps?: AdditionalParallaxProps
   ) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleClickItem}>
         <View style={styles.item}>
           <ParallaxImage
             source={{ uri: item.illustration }}
@@ -69,12 +86,18 @@ export const MyCarousel: React.FC = () => {
             <Text style={styles.title} numberOfLines={2}>
               {item.title}
             </Text>
-            <Text style={styles.subtitle} numberOfLines={2}>
-              {item.subtitle}
-            </Text>
+            <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+              <MapPin size={18} color={'#BDBDBE'} />
+              <Text style={styles.subtitle} numberOfLines={2}>
+                {item.subtitle}
+              </Text>
+            </View>
           </View>
 
-          <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0, 0.6)']} style={styles.linearGradient} />
+          <LinearGradient
+            colors={['rgba(0,0,0,0)', 'rgba(0,0,0, 0.6)']}
+            style={styles.linearGradient}
+          />
         </View>
       </TouchableOpacity>
     );
