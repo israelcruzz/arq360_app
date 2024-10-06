@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Badge } from '@/components/badge';
 import { MyCarousel } from '@/components/carousel';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { HeadingText } from '@/components/heading-text';
 import { styles } from "@/screens/private/home/styles";
 import { useHome } from './model';
+import { MapPin } from 'lucide-react-native';
 
 export const HomeView = ({
   handleClickAvatar,
@@ -16,7 +16,7 @@ export const HomeView = ({
     <View style={styles.container}>
       <View style={styles.header}>
         <Badge>
-          <FontAwesome6 name="location-dot" size={12} color="#666666" />
+          <MapPin size={16} color="#666666" />
           <Text>{address}</Text>
         </Badge>
 
@@ -26,10 +26,10 @@ export const HomeView = ({
       </View>
 
       <View style={styles.contentTextArea}>
-        <HeadingText title={`Hello, Israel ${'\n'}Dream Projects`} />
+        <HeadingText title={`Olá, Israel ${'\n'}Dream Projetos`} />
 
         <View style={styles.headingTextArea}>
-          <Text style={styles.headingText}>Projects</Text>
+          <Text style={styles.headingText}>Projetos</Text>
 
           <TouchableOpacity>
             <Text style={styles.seeAllText} onPress={handleClickSeeAll}>Ver Todos</Text>
