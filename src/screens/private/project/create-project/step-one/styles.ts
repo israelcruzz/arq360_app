@@ -48,7 +48,8 @@ export const styles = StyleSheet.create({
     gap: 24
   },
   scrollViewArea: {
-    gap: 24
+    gap: 24,
+    paddingBottom: 64
   },
   formArea: {
     gap: 24

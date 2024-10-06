@@ -86,5 +86,12 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#D1D1D1',
     backgroundColor: '#FFFFFF',
+  },
+  scrollArea: {
+    paddingBottom: 300
+  },
+  buttonsArea: {
+    gap: 24,
+    width: "100%"
   }
 })

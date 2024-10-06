@@ -1,32 +1,38 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-import { Badge } from '~/components/badge';
-import { MyCarousel } from '~/components/carousel';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { HeadingText } from '~/components/heading-text';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Badge } from '@/components/badge';
+import { MyCarousel } from '@/components/carousel';
+import { HeadingText } from '@/components/heading-text';
+import { styles } from "@/screens/private/home/styles";
+import { useHome } from './model';
+import { MapPin } from 'lucide-react-native';
 
-export const Home = () => {
+export const HomeView = ({
+  handleClickAvatar,
+  address,
+  handleClickSeeAll
+}: ReturnType<typeof useHome>) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Badge>
-          <FontAwesome6 name="location-dot" size={12} color="#666666" />
-          <Text>São Paulo, SP</Text>
+          <MapPin size={16} color="#666666" />
+          <Text>{address}</Text>
         </Badge>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleClickAvatar}>
           <Image style={styles.avatar} source={{ uri: 'https://github.com/israelcruzz.png' }} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.contentTextArea}>
-        <HeadingText title={`Hello, Israel ${'\n'}Dream Projects`} />
+        <HeadingText title={`Olá, Israel ${'\n'}Dream Projetos`} />
 
         <View style={styles.headingTextArea}>
-          <Text style={styles.headingText}>Projects</Text>
+          <Text style={styles.headingText}>Projetos</Text>
 
           <TouchableOpacity>
-            <Text style={styles.seeAllText}>See all</Text>
+            <Text style={styles.seeAllText} onPress={handleClickSeeAll}>Ver Todos</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -34,43 +40,3 @@ export const Home = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 24,
-    backgroundColor: "#FFFFFF"
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 24,
-  },
-  avatar: {
-    width: 56,
-    height: 56,
-    borderRadius: 9999,
-    objectFit: 'cover',
-  },
-  contentTextArea: {
-    paddingHorizontal: 24,
-    marginTop: 24
-  },
-  headingTextArea: {
-    marginTop: 24,
-    marginBottom: 24,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    color: '#000000',
-  },
-  headingText: {
-    color: '#000000',
-    fontWeight: 'medium',
-    fontSize: 24
-  },
-  seeAllText: {
-    fontSize: 14
-  }
-});

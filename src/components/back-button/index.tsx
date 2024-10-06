@@ -1,7 +1,7 @@
 import { AntDesign } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native"
-import { styles } from "./styles";
+import { styles } from "@/components/back-button/styles";
 
 export const BackButton = () => {
   const navigation = useNavigation();

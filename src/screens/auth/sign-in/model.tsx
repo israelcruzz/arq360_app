@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Alert } from "react-native";
 import * as Yup from 'yup';
-import { AuthRootList } from "~/navigation/auth.navigation";
-import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
-import { iconsVerifyPassword } from "~/utils/records/icons-verify-password";
+import { AuthRootList } from "@/navigation/auth.navigation";
+import { iconsVerifyEmail } from "@/utils/records/icons-verify-email";
+import { iconsVerifyPassword } from "@/utils/records/icons-verify-password";
 
 
 export const useSignIn = () => {

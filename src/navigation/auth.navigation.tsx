@@ -1,13 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { ForgotPasswordStepForViewModel } from '~/screens/auth/forgot-password/step-for/view-model';
-import { ForgotPasswordStepOneViewModel } from '~/screens/auth/forgot-password/step-one/view-model';
-import { ForgotPasswordStepTreeViewModel } from '~/screens/auth/forgot-password/step-tree/view-model';
-import { ForgotPasswordStepTwoViewModel } from '~/screens/auth/forgot-password/step-two/view-model';
-import { SignInViewModel } from '~/screens/auth/sign-in/view-model';
-import { SignUpStepForViewModel } from '~/screens/auth/sign-up/step-for/view-model';
-import { SignUpStepOneViewModel } from '~/screens/auth/sign-up/step-one/view-model';
-import { SignUpStepTreeViewModel } from '~/screens/auth/sign-up/step-tree/view-model';
-import { SignUpStepTwoViewModel } from '~/screens/auth/sign-up/step-two/view-model';
+import { ForgotPasswordStepForViewModel } from '@/screens/auth/forgot-password/step-for/view-model';
+import { ForgotPasswordStepOneViewModel } from '@/screens/auth/forgot-password/step-one/view-model';
+import { ForgotPasswordStepTreeViewModel } from '@/screens/auth/forgot-password/step-tree/view-model';
+import { ForgotPasswordStepTwoViewModel } from '@/screens/auth/forgot-password/step-two/view-model';
+import { SignInViewModel } from '@/screens/auth/sign-in/view-model';
+import { SignUpStepForViewModel } from '@/screens/auth/sign-up/step-for/view-model';
+import { SignUpStepOneViewModel } from '@/screens/auth/sign-up/step-one/view-model';
+import { SignUpStepTreeViewModel } from '@/screens/auth/sign-up/step-tree/view-model';
+import { SignUpStepTwoViewModel } from '@/screens/auth/sign-up/step-two/view-model';
 
 export type AuthRootList = {
   signIn: undefined;

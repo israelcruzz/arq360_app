@@ -1,77 +1,25 @@
-import { Image, Text, TouchableOpacity, View, ToastAndroid, Modal } from "react-native"
-import { styles } from "./styles"
-import { Feather } from "@expo/vector-icons"
-import { useState } from "react"
+import { Image, Text, TouchableOpacity, View, ToastAndroid, Modal } from 'react-native';
+import { styles } from './styles';
+import { Feather } from '@expo/vector-icons';
+import { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
-import { CreditCard, LockKeyhole, LogOut, LucideIcon, Moon, UserPen } from "lucide-react-native";
-import { Button } from "~/components/button";
+import { CreditCard, LockKeyhole, LogOut, LucideIcon, Moon, UserPen } from 'lucide-react-native';
+import { Button } from '@/components/button';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { SettingsRootList } from '@/navigation/private/settings/settings.navigation';
+import { AppRootList } from '@/navigation/private/private.navigations';
+import { useProfile } from './model';
 
-interface IProfileOptions {
-  name: string;
-  to: string;
-  icon: LucideIcon;
-  interactiveFunction?: () => void
-}
-
-export const ProfileView = () => {
-  const [image, setImage] = useState<string>('https://github.com/israelcruzz.png');
-  const [logoutModal, setLogoutModal] = useState<boolean>(false);
-
-  const handleLogoutModalActive = () => {
-    setLogoutModal(true);
-  }
-
-  const handleLogoutModalDesactive = () => {
-    setLogoutModal(false);
-  }
-
-  const PROFILE_OPTIONS: IProfileOptions[] = [
-    {
-      name: 'Editar Informações',
-      to: '/',
-      icon: UserPen
-    },
-    {
-      name: 'Editar Senha',
-      to: '/',
-      icon: LockKeyhole
-    },
-    {
-      name: 'Tema',
-      to: '/',
-      icon: Moon
-    },
-    {
-      name: 'Assinatura',
-      to: '/',
-      icon: CreditCard
-    },
-    {
-      name: 'Sair',
-      to: '/',
-      icon: LogOut,
-      interactiveFunction: () => handleLogoutModalActive()
-    }
-  ]
-
-  const handlePickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      base64: true,
-      aspect: [4, 4],
-      quality: 1,
-      allowsEditing: true
-    })
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-      ToastAndroid.show('Imagem selecionada', ToastAndroid.SHORT)
-    }
-  }
-
+export const ProfileView = ({
+  PROFILE_OPTIONS,
+  handleLogoutModalDesactive,
+  handlePickImage,
+  image,
+  logoutModal,
+}: ReturnType<typeof useProfile>) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerArea}>
-
         <View style={styles.avatar}>
           <Image width={96} height={96} borderRadius={999} source={{ uri: image }} />
           <TouchableOpacity style={styles.buttonUpload} onPress={handlePickImage}>
@@ -99,7 +47,10 @@ export const ProfileView = () => {
 
       <View style={styles.optionsArea}>
         {PROFILE_OPTIONS.map((option, index) => (
-          <TouchableOpacity key={index} style={styles.optionArea} onPress={option.interactiveFunction}>
+          <TouchableOpacity
+            key={index}
+            style={styles.optionArea}
+            onPress={option.interactiveFunction}>
             <View style={styles.optionViewArea}>
               <View style={styles.optionIconArea}>
                 <option.icon size={24} color="black" />
@@ -117,8 +68,7 @@ export const ProfileView = () => {
         animationType="fade"
         transparent
         visible={logoutModal}
-        onRequestClose={handleLogoutModalDesactive}
-      >
+        onRequestClose={handleLogoutModalDesactive}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <Text style={styles.modalText}>Você tem certeza que deseja sair da sua conta?</Text>
@@ -129,7 +79,6 @@ export const ProfileView = () => {
           </View>
         </View>
       </Modal>
-
     </View>
-  )
-}
+  );
+};

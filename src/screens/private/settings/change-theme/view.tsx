@@ -1,8 +1,8 @@
 import { Text, Touchable, TouchableOpacity, View } from "react-native";
 import { useChangeTheme } from "./model";
-import { BackButton } from "~/components/back-button";
-import { HeadingText } from "~/components/heading-text";
-import { DescriptionText } from "~/components/description-text";
+import { BackButton } from "@/components/back-button";
+import { HeadingText } from "@/components/heading-text";
+import { DescriptionText } from "@/components/description-text";
 import { styles } from "./styles";
 
 export const ChangeThemeView = ({ themeSelected, handleChangeTheme }: ReturnType<typeof useChangeTheme>) => {

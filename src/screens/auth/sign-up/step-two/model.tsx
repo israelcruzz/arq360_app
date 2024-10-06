@@ -5,9 +5,9 @@ import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { AuthRootList } from "~/navigation/auth.navigation";
-import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
-import { iconsVerifyPassword } from "~/utils/records/icons-verify-password";
+import { AuthRootList } from "@/navigation/auth.navigation";
+import { iconsVerifyEmail } from "@/utils/records/icons-verify-email";
+import { iconsVerifyPassword } from "@/utils/records/icons-verify-password";
 
 export const useSignUpStepTwo = () => {
   const [viewPassword, setViewPassword] = useState<boolean>(true);

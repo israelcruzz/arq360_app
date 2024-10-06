@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import { styles } from './styles';
+import { styles } from "@/components/button/styles";
 
 export interface ButtonProps extends TouchableOpacityProps {
   variant?: 'primary' | 'secondary';
