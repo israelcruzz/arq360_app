@@ -133,12 +133,14 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   linearGradient: {
-    position: "absolute",
+    position: 'absolute',
+    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
-    height: "90%",
-    opacity: 1,
     borderRadius: 16,
+    backgroundColor: 'black',
+    opacity: 0.1,
+    zIndex: 1,
   },
 });

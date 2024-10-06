@@ -24,6 +24,7 @@ export const useHome = () => {
   }, []);
 
   const navigator = useNavigation<NavigationProp<AppRootList>>();
+
   const handleClickAvatar = () => {
     // @ts-ignore
     navigator.navigate('tabs', { screen: 'profile' });
@@ -33,6 +34,7 @@ export const useHome = () => {
     // @ts-ignore
     navigator.navigate('tabs', { screen: 'explorer' });
   }
+
 
   return {
     handleClickAvatar,

@@ -5,8 +5,9 @@ import { useOnboarding } from '@/hooks/onboarding-hooks/useOnboarding';
 import NetInfo from '@react-native-community/netinfo';
 import { NotConnectionView } from '@/screens/not-connection/view';
 import { useEffect, useState } from 'react';
-import { PrivateTabNavigation } from "@/navigation/private-tab-navigation";
+import { PrivateTabNavigation } from '@/navigation/private-tab-navigation';
 import { AppNavigator } from './private/private.navigations';
+import Toast from 'react-native-toast-message';
 
 export const Router = () => {
   const { isOnboardingComplete, isLoading } = useOnboarding();
@@ -23,7 +24,7 @@ export const Router = () => {
   }, []);
 
   if (!isConnected) {
-    return <NotConnectionView />
+    return <NotConnectionView />;
   }
 
   if (isLoading) {
@@ -31,7 +32,7 @@ export const Router = () => {
       <View style={styles.container}>
         <ActivityIndicator color="#000000" />
       </View>
-    )
+    );
   }
 
   return (
@@ -39,7 +40,10 @@ export const Router = () => {
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       {isOnboardingComplete ? (
         isUserExists ? (
-          <AppNavigator />
+          <>
+            <AppNavigator />
+            <Toast position='bottom' />
+          </>
         ) : (
           <AuthNavigation />
         )
@@ -47,12 +51,12 @@ export const Router = () => {
         <OnboardingNavigation />
       )}
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF"
+    backgroundColor: '#FFFFFF',
   },
 });
