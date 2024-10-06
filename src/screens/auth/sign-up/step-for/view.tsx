@@ -45,7 +45,6 @@ export const SignUpStepForView = ({
                   </View>
                 </View>
               </TouchableOpacity>
-
             )
           })}
         </View>

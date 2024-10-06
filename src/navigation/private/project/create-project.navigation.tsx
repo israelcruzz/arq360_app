@@ -1,5 +1,4 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Text } from "react-native";
 import { CreateProjectStepSuccessView } from "~/screens/auth/sign-up/success/view";
 import { CreateProjectStepOneView } from "~/screens/private/project/create-project/step-one/view";
 import { CreateProjectStepTreeView } from "~/screens/private/project/create-project/step-tree/view";
@@ -17,7 +16,7 @@ const Stack = createStackNavigator<CreateProjectRootList>();
 export const CreateProjectNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="createProjectStepSuccess"
+      initialRouteName="createProjectStepTree"
       screenOptions={{ animationEnabled: false, headerShown: false }}>
       <Stack.Screen name="createProjectStepOne" component={CreateProjectStepOneView} />
       <Stack.Screen name="createProjectStepTwo" component={CreateProjectStepTwoView} />

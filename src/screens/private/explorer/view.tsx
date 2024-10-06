@@ -25,7 +25,14 @@ export const ExplorerView = () => {
     name: Yup.string()
       .min(3, 'O nome deve ter pelo menos 3 caracteres')
       .required('Campo obrigatório'),
-  })
+    numberTel: Yup.string()
+      .matches(
+        /^\(?\d{2}\)?[\s-]?9\d{4}[-\s]?\d{4}$/,
+        'Número de telefone inválido'
+      )
+      .required('Campo obrigatório'),
+  });
+
 
   type SubmitFormValidateDataClient = Yup.InferType<typeof validateFormSchemaClient>;
 
@@ -33,13 +40,31 @@ export const ExplorerView = () => {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm<SubmitFormValidateDataClient>({
     resolver: yupResolver(validateFormSchemaClient),
     defaultValues: {
       name: '',
+      numberTel: '',
     }
   })
+
+
+  const formatInputPhone = (text: string) => {
+    const cleaned = text.replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{2})(\d{0,5})(\d{0,4})$/);
+
+    if (match) {
+      const ddd = `(${match[1]})`;
+      const firstPart = match[2]; 
+      const secondPart = match[3];
+
+      return `${ddd} ${firstPart}${firstPart.length === 5 ? '' : '9'}${secondPart.length > 0 ? '-' + secondPart : ''}`.trim();
+    }
+
+    return cleaned; 
+  };
+
 
   const handleSubmitClientForm = (data: SubmitFormValidateDataClient) => {
     Alert.alert(data.name);
@@ -157,13 +182,13 @@ export const ExplorerView = () => {
             </>
 
           ) : (
-          <>
-            <View style={styles.searchClientArea}>
-              <View style={{ flex: 1 }}>
-                <Input onChangeText={handleChangeTextQuery} placeholder="Pesquisar">
-                  <Feather name="search" size={24} color="#828282" />
-                </Input>
-              </View>
+            <>
+              <View style={styles.searchClientArea}>
+                <View style={{ flex: 1 }}>
+                  <Input onChangeText={handleChangeTextQuery} placeholder="Pesquisar">
+                    <Feather name="search" size={24} color="#828282" />
+                  </Input>
+                </View>
 
                 <TouchableOpacity style={styles.addClientButton} onPress={handleActiveAddClientModal}>
                   <Feather name="plus" size={24} color="#FFFFFF" />
@@ -198,6 +223,23 @@ export const ExplorerView = () => {
                           )}
                         />
                         {errors.name && <Text style={styles.errorText}>{errors.name.message}</Text>}
+                      </View>
+
+                      <View>
+                        <Label title="Número (Celular)" />
+                        <Controller
+                          control={control}
+                          name="numberTel"
+                          render={({ field: { onChange, value } }) => (
+                            <Input
+                              onChangeText={(value) => onChange(formatInputPhone(value))}
+                              value={formatInputPhone(value)}
+                              keyboardType="numeric"
+                              placeholder="(11) 24242-1122"
+                            />
+                          )}
+                        />
+                        {errors.numberTel && <Text style={styles.errorText}>{errors.numberTel.message}</Text>}
                       </View>
 
                       <View>

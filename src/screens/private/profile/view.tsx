@@ -1,11 +1,58 @@
-import { Image, Text, TouchableOpacity, View, ToastAndroid } from "react-native"
+import { Image, Text, TouchableOpacity, View, ToastAndroid, Modal } from "react-native"
 import { styles } from "./styles"
 import { Feather } from "@expo/vector-icons"
 import { useState } from "react"
 import * as ImagePicker from 'expo-image-picker';
+import { CreditCard, LockKeyhole, LogOut, LucideIcon, Moon, UserPen } from "lucide-react-native";
+import { Button } from "~/components/button";
+
+interface IProfileOptions {
+  name: string;
+  to: string;
+  icon: LucideIcon;
+  interactiveFunction?: () => void
+}
 
 export const ProfileView = () => {
   const [image, setImage] = useState<string>('https://github.com/israelcruzz.png');
+  const [logoutModal, setLogoutModal] = useState<boolean>(false);
+
+  const handleLogoutModalActive = () => {
+    setLogoutModal(true);
+  }
+
+  const handleLogoutModalDesactive = () => {
+    setLogoutModal(false);
+  }
+
+  const PROFILE_OPTIONS: IProfileOptions[] = [
+    {
+      name: 'Editar Informações',
+      to: '/',
+      icon: UserPen
+    },
+    {
+      name: 'Editar Senha',
+      to: '/',
+      icon: LockKeyhole
+    },
+    {
+      name: 'Tema',
+      to: '/',
+      icon: Moon
+    },
+    {
+      name: 'Assinatura',
+      to: '/',
+      icon: CreditCard
+    },
+    {
+      name: 'Sair',
+      to: '/',
+      icon: LogOut,
+      interactiveFunction: () => handleLogoutModalActive()
+    }
+  ]
 
   const handlePickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -15,7 +62,7 @@ export const ProfileView = () => {
       allowsEditing: true
     })
 
-    if(!result.canceled) {
+    if (!result.canceled) {
       setImage(result.assets[0].uri);
       ToastAndroid.show('Imagem selecionada', ToastAndroid.SHORT)
     }
@@ -51,21 +98,37 @@ export const ProfileView = () => {
       </View>
 
       <View style={styles.optionsArea}>
-        {new Array(6).fill(0).map((_, index) => (
-          <TouchableOpacity key={index} style={styles.optionArea}>
+        {PROFILE_OPTIONS.map((option, index) => (
+          <TouchableOpacity key={index} style={styles.optionArea} onPress={option.interactiveFunction}>
             <View style={styles.optionViewArea}>
               <View style={styles.optionIconArea}>
-                <Feather name="user" size={24} color="black" />
+                <option.icon size={24} color="black" />
               </View>
 
-              <Text>Edit Profile</Text>
+              <Text>{option.name}</Text>
             </View>
 
             <Feather name="chevron-right" size={24} color="#636264" />
           </TouchableOpacity>
         ))}
-
       </View>
+
+      <Modal
+        animationType="fade"
+        transparent
+        visible={logoutModal}
+        onRequestClose={handleLogoutModalDesactive}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Você tem certeza que deseja sair da sua conta?</Text>
+            <View style={{ width: '100%', gap: 12 }}>
+              <Button text="Sair" />
+              <Button text="Voltar" variant="secondary" onPress={handleLogoutModalDesactive} />
+            </View>
+          </View>
+        </View>
+      </Modal>
 
     </View>
   )
