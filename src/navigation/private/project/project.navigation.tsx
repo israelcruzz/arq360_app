@@ -3,6 +3,7 @@ import 'react-native-reanimated';
 import { ViewProjectView } from '@/screens/private/project/view-project/view';
 import { RouteProp } from '@react-navigation/native';
 import { AppRootList } from '../private.navigations';
+import { ViewProjectViewModel } from '@/screens/private/project/view-project/view-model';
 
 export type ProjectRootList = {
   viewProject: { projectId: string };
@@ -22,7 +23,11 @@ export const ProjectNavigation = ({ route }: ProjectNavigationProps) => {
     <Stack.Navigator
       initialRouteName="viewProject"
       screenOptions={{ animationEnabled: false, headerShown: false }}>
-      <Stack.Screen name="viewProject" component={ViewProjectView} initialParams={{ projectId }} />
+      <Stack.Screen
+        name="viewProject"
+        component={ViewProjectViewModel}
+        initialParams={{ projectId }}
+      />
     </Stack.Navigator>
   );
 };

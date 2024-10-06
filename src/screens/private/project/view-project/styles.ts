@@ -255,5 +255,11 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  infosArea: {
+    marginTop: 8,
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
   }
 })

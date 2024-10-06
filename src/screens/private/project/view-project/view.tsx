@@ -1,56 +1,27 @@
-import * as Linking from 'expo-linking';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, Image, Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import BottomSheet, { BottomSheetView, useBottomSheetTimingConfigs } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { styles } from './styles';
 import { BackButton } from '@/components/back-button';
 import { Button as Btn } from '../../../../components/button';
 import { HeadingText } from '@/components/heading-text';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { Bath, Edit, Ruler, Settings, Trash, X } from 'lucide-react-native';
+import { Bath, Edit, MapPin, Ruler, Settings, Trash, X } from 'lucide-react-native';
 import MapView from 'react-native-maps';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Easing } from 'react-native-reanimated';
-import { useRoute } from '@react-navigation/native';
-import { ProjectViewProps } from '@/navigation/private/project/project.navigation';
+import { useViewProject } from './model';
 
-export const ViewProjectView = () => {
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['100', '50'], []);
-  const [settingProjectMenuVisible, setSettingProjectMenuVisible] = useState<boolean>(false);
-  const route = useRoute<ProjectViewProps>();
-  const { projectId } = route.params;
-
-  useEffect(() => {
-    Alert.alert('O projeto é', projectId);
-  });
-
-  const handleCloseBottomSheet = () => {
-    bottomSheetRef.current?.close();
-  };
-
-  const handleOpenBottomSheet = () => {
-    bottomSheetRef.current?.expand();
-  };
-
-  const handleClickInButtonToSendMessage = () => {
-    Linking.openURL('https://Wa.me/5511985376628');
-  };
-
-  const handleSettingProjectMenuVisible = () => {
-    setSettingProjectMenuVisible(true);
-  };
-
-  const handleSettingProjectMenuInvisible = () => {
-    setSettingProjectMenuVisible(false);
-  };
-
-  const animationConfigs = useBottomSheetTimingConfigs({
-    duration: 250,
-    easing: Easing.exp,
-  });
-
+export const ViewProjectView = ({
+  animationConfigs,
+  bottomSheetRef,
+  handleClickInButtonToSendMessage,
+  handleCloseBottomSheet,
+  handleOpenBottomSheet,
+  handleSettingProjectMenuInvisible,
+  handleSettingProjectMenuVisible,
+  settingProjectMenuVisible,
+  snapPoints
+}: ReturnType<typeof useViewProject>) => {
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.contentArea}>
@@ -108,7 +79,10 @@ export const ViewProjectView = () => {
 
             <View style={styles.textImageArea}>
               <Text style={styles.headingTextImage}>Casa de Praia</Text>
-              <Text style={styles.descriptionTextImage}>R$ 1.200.000,00</Text>
+              <View style={styles.infosArea}>
+                <MapPin size={18} color={'#BDBDBE'} />
+                <Text style={styles.descriptionTextImage}>São Paulo, SP</Text>
+              </View>
             </View>
           </View>
 
@@ -201,7 +175,7 @@ export const ViewProjectView = () => {
         ref={bottomSheetRef}
         onClose={handleCloseBottomSheet}
         enablePanDownToClose
-        index={1}
+        index={-1}
         animationConfigs={animationConfigs}
         style={styles.bottomSheet}>
         <BottomSheetView style={styles.bottomSheetArea}>
