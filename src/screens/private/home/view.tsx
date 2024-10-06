@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-import { Badge } from '~/components/badge';
-import { MyCarousel } from '~/components/carousel';
+import { Badge } from '@/components/badge';
+import { MyCarousel } from '@/components/carousel';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { HeadingText } from '~/components/heading-text';
+import { HeadingText } from '@/components/heading-text';
 
 export const Home = () => {
   return (

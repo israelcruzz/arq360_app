@@ -1,5 +1,5 @@
-import { Text, TextInput, TextInputProps, TouchableWithoutFeedback, View } from 'react-native';
-import { styles } from './styles';
+import { TextInput, TextInputProps, View } from 'react-native';
+import { styles } from "@/components/input/styles";
 import React from 'react';
 
 export interface InputProps extends TextInputProps {

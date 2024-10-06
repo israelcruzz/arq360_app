@@ -4,8 +4,8 @@ import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { AuthRootList } from "~/navigation/auth.navigation";
-import { iconsVerifyEmail } from "~/utils/records/icons-verify-email";
+import { AuthRootList } from "@/navigation/auth.navigation";
+import { iconsVerifyEmail } from "@/utils/records/icons-verify-email";
 
 export const useEditInformation = () => {
   const [verifyEmail, setVerifyEmail] = useState<boolean>(false);

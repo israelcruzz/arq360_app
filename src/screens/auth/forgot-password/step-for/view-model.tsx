@@ -1,4 +1,4 @@
-import { useForgotPasswordStepFor } from "./model"
+import { useForgotPasswordStepFor } from "@/screens/auth/forgot-password/step-for/model";
 import { ForgotPasswordStepForView } from "./view";
 
 export const ForgotPasswordStepForViewModel = () => {

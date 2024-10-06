@@ -1,11 +1,11 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
-import { BackButton } from "~/components/back-button";
-import { HeadingText } from "~/components/heading-text";
-import { DescriptionText } from "~/components/description-text";
-import { Button } from "~/components/button";
+import { BackButton } from "@/components/back-button";
+import { HeadingText } from "@/components/heading-text";
+import { DescriptionText } from "@/components/description-text";
+import { Button } from "@/components/button";
 import { useSignUpStepFor } from "./model";
-import { SUBSCRIPTIONS_MOCK } from "~/mocks/subscriptions";
+import { SUBSCRIPTIONS_MOCK } from "@/mocks/subscriptions";
 
 export const SignUpStepForView = ({
   subscriptionSelected,

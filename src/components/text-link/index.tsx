@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import { styles } from './styles';
+import { styles } from "@/components/text-link/styles";
 import React from 'react';
 
 export interface TextLinkProps extends TouchableOpacityProps {

@@ -1,19 +1,18 @@
 import { Alert, Image, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
-import { BackButton } from "~/components/back-button"
-import { HeadingText } from "~/components/heading-text"
-import { DescriptionText } from "~/components/description-text"
-import { Button } from "~/components/button"
+import { BackButton } from "@/components/back-button"
+import { HeadingText } from "@/components/heading-text"
+import { DescriptionText } from "@/components/description-text"
+import { Button } from "@/components/button"
 import { useState } from "react"
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Controller, set, useForm } from "react-hook-form"
-import * as ImagePicker from 'expo-image-picker';
+import { Controller, useForm } from "react-hook-form"
+import * as ImagePicker from 'expo-image-picker'
 import { Feather } from "@expo/vector-icons"
-import { Input } from "~/components/input"
-import { ClientLine } from "~/components/client-line"
-import { Label } from "~/components/label"
-import { CLIENTS_MOCK, IClient } from "~/mocks/clients"
+import { Input } from "@/components/input"
+import { Label } from "@/components/label"
+import { CLIENTS_MOCK, IClient } from "@/mocks/clients"
 
 export enum RoomType {
   LivingRoom = 'livingRoom',

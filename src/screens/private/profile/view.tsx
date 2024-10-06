@@ -4,7 +4,7 @@ import { Feather } from "@expo/vector-icons"
 import { useState } from "react"
 import * as ImagePicker from 'expo-image-picker';
 import { CreditCard, LockKeyhole, LogOut, LucideIcon, Moon, UserPen } from "lucide-react-native";
-import { Button } from "~/components/button";
+import { Button } from "@/components/button";
 
 interface IProfileOptions {
   name: string;

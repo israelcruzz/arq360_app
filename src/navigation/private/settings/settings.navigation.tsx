@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { ChangePasswordViewModel } from "~/screens/private/settings/change-password/view-model";
-import { ChangeThemeViewModel } from "~/screens/private/settings/change-theme/view-model";
-import { EditInformationViewModel } from "~/screens/private/settings/edit-information/view-model";
+import { ChangePasswordViewModel } from "@/screens/private/settings/change-password/view-model";
+import { ChangeThemeViewModel } from "@/screens/private/settings/change-theme/view-model";
+import { EditInformationViewModel } from "@/screens/private/settings/edit-information/view-model";
 
 export type SettingsRootList = {
   editInformation: undefined;

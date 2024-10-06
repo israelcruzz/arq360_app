@@ -1,5 +1,5 @@
 import { Image, Text, TouchableOpacity, TouchableOpacityProps, View } from "react-native"
-import { styles } from "./styles"
+import { styles } from "@/components/client-line/styles";
 
 interface ClientLineProps extends TouchableOpacityProps {
   name: string;

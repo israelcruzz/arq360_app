@@ -1,12 +1,9 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
-import { BackButton } from "~/components/back-button";
-import { HeadingText } from "~/components/heading-text";
-import { DescriptionText } from "~/components/description-text";
-import { Controller } from "react-hook-form";
-import { Label } from "~/components/label";
-import { Input } from "~/components/input";
-import { Button } from "~/components/button";
+import { BackButton } from "@/components/back-button";
+import { HeadingText } from "@/components/heading-text";
+import { DescriptionText } from "@/components/description-text";
+import { Button } from "@/components/button";
 import { useSignUpStepTree } from "./model";
 import Feather from '@expo/vector-icons/Feather';
 

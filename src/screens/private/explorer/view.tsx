@@ -1,15 +1,15 @@
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
 import { Alert, Image, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Button } from "../../../components/button"
-import { CardProject } from "~/components/card-project";
-import { ClientLine } from "~/components/client-line";
-import { HeadingText } from "~/components/heading-text";
-import { Input } from "~/components/input";
+import { Button } from "@/components/button"
+import { CardProject } from "@/components/card-project";
+import { ClientLine } from "@/components/client-line";
+import { HeadingText } from "@/components/heading-text";
+import { Input } from "@/components/input";
 import * as Yup from 'yup';
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Label } from "~/components/label";
+import { Label } from "@/components/label";
 import * as ImagePicker from 'expo-image-picker';
 // import WebView from "react-native-webview";
 

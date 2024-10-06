@@ -1,7 +1,7 @@
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 
-import { OnboardingOneViewModel } from '~/screens/onboarding/onboarding-one/view-model';
-import { OnboardingTwoViewModel } from '~/screens/onboarding/onboarding-two/view-model';
+import { OnboardingOneViewModel } from '@/screens/onboarding/onboarding-one/view-model';
+import { OnboardingTwoViewModel } from '@/screens/onboarding/onboarding-two/view-model';
 
 export type OnBoardingRootList = {
   OnboardingOne: undefined;

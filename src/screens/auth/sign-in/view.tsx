@@ -1,12 +1,12 @@
 import { Text, TouchableOpacity, View } from 'react-native';
-import { DescriptionText } from '~/components/description-text';
-import { HeadingText } from '~/components/heading-text';
+import { DescriptionText } from '@/components/description-text';
+import { HeadingText } from '@/components/heading-text';
 import { Controller } from 'react-hook-form';
 import React from 'react';
-import { Input } from '~/components/input';
-import { Button } from '~/components/button';
-import { Label } from '~/components/label';
-import { TextLink } from '~/components/text-link';
+import { Input } from '@/components/input';
+import { Button } from '@/components/button';
+import { Label } from '@/components/label';
+import { TextLink } from '@/components/text-link';
 import { styles } from './styles';
 import { useSignIn } from './model';
 

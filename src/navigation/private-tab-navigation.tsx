@@ -1,10 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text } from "react-native";
-import Feather from '@expo/vector-icons/Feather';
-import Octicons from '@expo/vector-icons/Octicons';
-import { Home } from "~/screens/private/home/view";
-import { ExplorerView } from "~/screens/private/explorer/view";
-import { ProfileView } from "~/screens/private/profile/view";
+import { Home } from "@/screens/private/home/view";
+import { ExplorerView } from "@/screens/private/explorer/view";
+import { ProfileView } from "@/screens/private/profile/view";
+import { CopyPlus, GalleryVerticalEnd, House, UserRound } from "lucide-react-native";
+import { CreateProjectStepOneView } from "@/screens/private/project/create-project/step-one/view";
 
 export type PrivateRootList = {
   home: undefined;
@@ -15,7 +14,6 @@ export type PrivateRootList = {
 
 const Tab = createBottomTabNavigator<PrivateRootList>();
 
-const CreateProject = () => <Text>CreateProject</Text>
 
 export const PrivateTabNavigation = () => {
   return (
@@ -39,7 +37,7 @@ export const PrivateTabNavigation = () => {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => {
-            return focused ? <Feather name="home" size={24} color="black" /> : <Feather name="home" size={24} color="gray" />;
+            return focused ? <House size={24} color="black" /> : <House size={24} color="gray" />;
           },
           headerShown: false,
         }}
@@ -49,17 +47,17 @@ export const PrivateTabNavigation = () => {
         component={ExplorerView}
         options={{
           tabBarIcon: ({ focused }) => {
-            return focused ? <Feather name="search" size={24} color="black" /> : <Feather name="search" size={24} color="gray" />;
+            return focused ? <GalleryVerticalEnd size={24} color="black" /> : <GalleryVerticalEnd size={24} color="gray" />;
           },
           headerShown: false,
         }}
       />
       <Tab.Screen
         name="createProject"
-        component={CreateProject}
+        component={CreateProjectStepOneView}
         options={{
           tabBarIcon: ({ focused }) => {
-            return focused ? <Octicons name="diff-added" size={24} color="black" /> : <Octicons name="diff-added" size={24} color="gray" />;
+            return focused ? <CopyPlus size={24} color="black" /> : <CopyPlus size={24} color="gray" />;
           },
           headerShown: false,
         }}
@@ -69,7 +67,7 @@ export const PrivateTabNavigation = () => {
         component={ProfileView}
         options={{
           tabBarIcon: ({ focused }) => {
-            return focused ? <Feather name="user" size={24} color="black" /> : <Feather name="user" size={24} color="gray" />;
+            return focused ? <UserRound size={24} color="black" /> : <UserRound size={24} color="gray" />;
           },
           headerShown: false,
         }}

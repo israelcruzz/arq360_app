@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { OnboardingContext } from "./onboarding-context"
+import { OnboardingContext } from "@/context/onboarding-context/onboarding-context"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export interface IOnboardingProvider {

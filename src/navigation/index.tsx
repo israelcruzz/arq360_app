@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OnboardingProvider } from '~/context/onboarding-context/onboarding-provider';
+import { OnboardingProvider } from '@/context/onboarding-context/onboarding-provider';
 import { Router } from './router';
 
 export type RootStackParamList = {

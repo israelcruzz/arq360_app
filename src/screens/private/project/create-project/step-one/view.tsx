@@ -1,17 +1,17 @@
 import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
-import { BackButton } from "~/components/back-button"
-import { HeadingText } from "~/components/heading-text"
-import { DescriptionText } from "~/components/description-text"
+import { BackButton } from "@/components/back-button"
+import { HeadingText } from "@/components/heading-text"
+import { DescriptionText } from "@/components/description-text"
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Input } from "~/components/input"
-import { Label } from "~/components/label"
+import { Input } from "@/components/input"
+import { Label } from "@/components/label"
 import { useCallback, useEffect, useState } from "react"
 import axios from "axios";
 import { Feather } from "@expo/vector-icons"
-import { Button } from "~/components/button"
+import { Button } from "@/components/button"
 import * as ImagePicker from 'expo-image-picker';
 
 export interface ViaCepResponse {

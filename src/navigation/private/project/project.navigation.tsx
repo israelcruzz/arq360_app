@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import 'react-native-reanimated';
-import { ViewProjectView } from "~/screens/private/project/view-project/view";
+import { ViewProjectView } from "@/screens/private/project/view-project/view";
 
 export type ProjectRootList = {
   viewProject: undefined;

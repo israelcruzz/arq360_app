@@ -1,6 +1,6 @@
 import React from "react"
 import { Text, View } from "react-native"
-import { styles } from "./styles"
+import { styles } from "@/components/badge/styles";
 
 interface BadgeProps {
   children: React.ReactNode

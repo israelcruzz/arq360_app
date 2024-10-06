@@ -1,10 +1,10 @@
-import { Text } from "react-native"
-import { styles } from "./styles"
+import { Text, TextProps } from "react-native"
+import { styles } from "@/components/description-text/styles";
 
-export interface DescriptionTextProps {
+export interface DescriptionTextProps extends TextProps {
   text: string
 }
 
-export const DescriptionText = ({ text }: DescriptionTextProps) => {
-  return <Text style={styles.textStyle}>{text}</Text>
+export const DescriptionText = ({ text, style, ...props }: DescriptionTextProps) => {
+  return <Text style={[styles.textStyle, style]} {...props}>{text}</Text>
 }

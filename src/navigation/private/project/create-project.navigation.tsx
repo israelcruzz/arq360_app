@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { CreateProjectStepSuccessView } from "~/screens/auth/sign-up/success/view";
-import { CreateProjectStepOneView } from "~/screens/private/project/create-project/step-one/view";
-import { CreateProjectStepTreeView } from "~/screens/private/project/create-project/step-tree/view";
-import { CreateProjectStepTwoView } from "~/screens/private/project/create-project/step-two/view";
+import { CreateProjectStepSuccessView } from "@/screens/private/project/create-project/success/view";
+import { CreateProjectStepOneView } from "@/screens/private/project/create-project/step-one/view";
+import { CreateProjectStepTreeView } from "@/screens/private/project/create-project/step-tree/view";
+import { CreateProjectStepTwoView } from "@/screens/private/project/create-project/step-two/view";
 
 export type CreateProjectRootList = {
   createProjectStepOne: undefined;
