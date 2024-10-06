@@ -12,6 +12,7 @@ export const ViewProjectViewModel = () => {
     handleSettingProjectMenuVisible,
     settingProjectMenuVisible,
     snapPoints,
+    handleClickViewConvenient
   } = useViewProject();
 
   return (
@@ -25,6 +26,7 @@ export const ViewProjectViewModel = () => {
       handleSettingProjectMenuVisible={handleSettingProjectMenuVisible}
       settingProjectMenuVisible={settingProjectMenuVisible}
       snapPoints={snapPoints}
+      handleClickViewConvenient={handleClickViewConvenient}
     />
   );
 };

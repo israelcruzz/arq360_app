@@ -8,8 +8,8 @@ import { SettingsNavigation } from "./settings/settings.navigation";
 export type AppRootList = {
   tabs: undefined; 
   createProjectFlow: undefined;
-  viewProjectFlow: { projectId: string }
-  settingsFlow: { screen: string }
+  viewProjectFlow: { projectId: string };
+  settingsFlow: { screen: string };
 };
 
 const Stack = createStackNavigator<AppRootList>();

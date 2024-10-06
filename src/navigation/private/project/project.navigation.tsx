@@ -4,9 +4,11 @@ import { ViewProjectView } from '@/screens/private/project/view-project/view';
 import { RouteProp } from '@react-navigation/native';
 import { AppRootList } from '../private.navigations';
 import { ViewProjectViewModel } from '@/screens/private/project/view-project/view-model';
+import { ViewConvenientView } from '@/screens/private/convenient/view-convenient/view';
 
 export type ProjectRootList = {
   viewProject: { projectId: string };
+  convenient: undefined;
 };
 
 const Stack = createStackNavigator<ProjectRootList>();
@@ -27,6 +29,10 @@ export const ProjectNavigation = ({ route }: ProjectNavigationProps) => {
         name="viewProject"
         component={ViewProjectViewModel}
         initialParams={{ projectId }}
+      />
+      <Stack.Screen
+        name="convenient"
+        component={ViewConvenientView}
       />
     </Stack.Navigator>
   );

@@ -3,8 +3,9 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Alert } from 'react-native';
 import BottomSheet, { useBottomSheetTimingConfigs } from '@gorhom/bottom-sheet';
 import { Easing } from 'react-native-reanimated';
-import { useRoute } from '@react-navigation/native';
+import { NavigationProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ProjectViewProps } from '@/navigation/private/project/project.navigation';
+import { AppRootList } from '@/navigation/private/private.navigations';
 
 export const useViewProject = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -37,10 +38,17 @@ export const useViewProject = () => {
     setSettingProjectMenuVisible(false);
   };
 
+  const navigator = useNavigation<NavigationProp<AppRootList>>();
+
   const animationConfigs = useBottomSheetTimingConfigs({
     duration: 250,
     easing: Easing.exp,
   });
+
+  const handleClickViewConvenient = () => {
+    // @ts-ignore
+    navigator.navigate("viewProjectFlow", { screen: "convenient" });
+  }
 
   return {
     bottomSheetRef,
@@ -51,6 +59,7 @@ export const useViewProject = () => {
     handleClickInButtonToSendMessage,
     handleSettingProjectMenuVisible,
     handleSettingProjectMenuInvisible,
+    handleClickViewConvenient,
     animationConfigs,
   };
 };

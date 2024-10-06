@@ -20,7 +20,8 @@ export const ViewProjectView = ({
   handleSettingProjectMenuInvisible,
   handleSettingProjectMenuVisible,
   settingProjectMenuVisible,
-  snapPoints
+  snapPoints,
+  handleClickViewConvenient
 }: ReturnType<typeof useViewProject>) => {
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -192,13 +193,13 @@ export const ViewProjectView = ({
               <View key={index} style={styles.convenientBoxArea}>
                 <View style={styles.convenientBox}>
                   <Image
-                    source={require('../../../../assets/images/house-example.png')}
+                    source={require('@/assets/images/house-example.png')}
                     style={styles.convenientImageCard}
                   />
                   <Text style={styles.convenientText}>Quarto</Text>
                 </View>
 
-                <Btn text="Ver" variant="secondary" />
+                <Btn onPress={handleClickViewConvenient} text="Ver" variant="secondary" />
               </View>
             ))}
           </ScrollView>

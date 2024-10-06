@@ -4,6 +4,12 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    padding: 24
   },
+  backButtonArea: {
+    zIndex: 99,
+    position: "absolute",
+    top: 0,
+    marginHorizontal: 24,
+    marginVertical: 32
+  }
 })
