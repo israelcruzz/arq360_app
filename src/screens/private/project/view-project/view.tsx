@@ -50,7 +50,7 @@ export const ViewProjectView = () => {
           <View style={styles.imageArea}>
             <Image
               style={styles.imageProjectArea}
-              source={require('../../../../assets/images/house-example.png')}
+              source={require('@/assets/images/house-example.png')}
             />
 
             <LinearGradient

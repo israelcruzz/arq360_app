@@ -1,13 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Carousel, { ParallaxImage, AdditionalParallaxProps } from 'react-native-snap-carousel';
-import {
-  View,
-  Text,
-  Dimensions,
-  StyleSheet,
-  Platform,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, Dimensions, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface CarouselItem {
   title: string;
@@ -80,10 +74,9 @@ export const MyCarousel: React.FC = () => {
             </Text>
           </View>
 
-          <View style={styles.linearGradient} />
+          <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0, 0.6)']} style={styles.linearGradient} />
         </View>
       </TouchableOpacity>
-
     );
   };
 
@@ -108,7 +101,7 @@ const styles = StyleSheet.create({
   },
   item: {
     width: screenWidth - 60,
-    height: 500
+    height: 500,
   },
   imageContainer: {
     flex: 1,
@@ -125,7 +118,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     padding: 24,
-    zIndex: 99
+    zIndex: 99,
   },
   title: {
     paddingTop: 10,
@@ -137,17 +130,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'semibold',
     color: 'white',
-    opacity: 0.7
+    opacity: 0.7,
   },
   linearGradient: {
-    position: 'absolute',
-    bottom: 0,
-    top: 0,
+    position: "absolute",
     left: 0,
     right: 0,
+    bottom: 0,
+    height: "90%",
+    opacity: 1,
     borderRadius: 16,
-    backgroundColor: 'black',
-    opacity: 0.1,
-    zIndex: 1,
-  }
+  },
 });
