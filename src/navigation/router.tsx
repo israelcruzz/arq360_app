@@ -1,17 +1,19 @@
+import NetInfo from '@react-native-community/netinfo';
+import { useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import Toast from 'react-native-toast-message';
+
 import AuthNavigation from './auth.navigation';
 import OnboardingNavigation from './onboarding-navigator';
-import { useOnboarding } from '@/hooks/onboarding-hooks/useOnboarding';
-import NetInfo from '@react-native-community/netinfo';
-import { NotConnectionView } from '@/screens/not-connection/view';
-import { useEffect, useState } from 'react';
-import { PrivateTabNavigation } from '@/navigation/private-tab-navigation';
 import { AppNavigator } from './private/private.navigations';
-import Toast from 'react-native-toast-message';
+
+import { useStorageAuth } from '@/hooks/auth-hooks/useStorageAuth';
+import { useOnboarding } from '@/hooks/onboarding-hooks/useOnboarding';
+import { NotConnectionView } from '@/screens/not-connection/view';
 
 export const Router = () => {
   const { isOnboardingComplete, isLoading } = useOnboarding();
-  const isUserExists = true;
+  const { user } = useStorageAuth();
 
   const [isConnected, setIsConnected] = useState<boolean | null>(true);
 
@@ -38,11 +40,12 @@ export const Router = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#000" />
+
       {isOnboardingComplete ? (
-        isUserExists ? (
+        user ? (
           <>
             <AppNavigator />
-            <Toast position='bottom' />
+            <Toast position="bottom" />
           </>
         ) : (
           <AuthNavigation />

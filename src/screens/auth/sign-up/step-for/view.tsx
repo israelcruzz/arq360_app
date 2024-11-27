@@ -18,7 +18,7 @@ export const SignUpStepForView = ({
         <BackButton />
 
         <View style={styles.textHeaderArea}>
-          <HeadingText title="Chose your plan" />
+          <HeadingText title="Escolha seu plano" />
           <DescriptionText text="Your new password must be unique from those previously used." />
         </View>
 

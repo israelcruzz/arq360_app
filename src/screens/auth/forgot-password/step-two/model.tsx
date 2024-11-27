@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import { Alert } from "react-native";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Alert } from 'react-native';
 import * as Yup from 'yup';
+
+import { AuthRootList } from '@/navigation/auth.navigation';
 
 export const useForgotPasswordStepTwo = () => {
   const [timer, setTimer] = useState<number>(60);
@@ -10,11 +13,26 @@ export const useForgotPasswordStepTwo = () => {
   const optRefs = useRef<any>([]);
 
   const otpSchema = Yup.object().shape({
-    otp0: Yup.string().length(1, 'Deve ter exatamente 1 caractere').matches(/^[0-9]$/, 'Somente números são permitidos').required('Campo obrigatório'),
-    otp1: Yup.string().length(1, 'Deve ter exatamente 1 caractere').matches(/^[0-9]$/, 'Somente números são permitidos').required('Campo obrigatório'),
-    otp2: Yup.string().length(1, 'Deve ter exatamente 1 caractere').matches(/^[0-9]$/, 'Somente números são permitidos').required('Campo obrigatório'),
-    otp3: Yup.string().length(1, 'Deve ter exatamente 1 caractere').matches(/^[0-9]$/, 'Somente números são permitidos').required('Campo obrigatório'),
-    otp4: Yup.string().length(1, 'Deve ter exatamente 1 caractere').matches(/^[0-9]$/, 'Somente números são permitidos').required('Campo obrigatório'),
+    otp0: Yup.string()
+      .length(1, 'Deve ter exatamente 1 caractere')
+      .matches(/^[0-9]$/, 'Somente números são permitidos')
+      .required('Campo obrigatório'),
+    otp1: Yup.string()
+      .length(1, 'Deve ter exatamente 1 caractere')
+      .matches(/^[0-9]$/, 'Somente números são permitidos')
+      .required('Campo obrigatório'),
+    otp2: Yup.string()
+      .length(1, 'Deve ter exatamente 1 caractere')
+      .matches(/^[0-9]$/, 'Somente números são permitidos')
+      .required('Campo obrigatório'),
+    otp3: Yup.string()
+      .length(1, 'Deve ter exatamente 1 caractere')
+      .matches(/^[0-9]$/, 'Somente números são permitidos')
+      .required('Campo obrigatório'),
+    otp4: Yup.string()
+      .length(1, 'Deve ter exatamente 1 caractere')
+      .matches(/^[0-9]$/, 'Somente números são permitidos')
+      .required('Campo obrigatório'),
   });
 
   type SubmitFormValidateData = Yup.InferType<typeof otpSchema>;
@@ -31,16 +49,18 @@ export const useForgotPasswordStepTwo = () => {
       otp2: '',
       otp3: '',
       otp4: '',
-    }
+    },
   });
 
+  const navigation = useNavigation<NavigationProp<AuthRootList>>();
+
   const handleSubmitForm = (data: SubmitFormValidateData) => {
-    Alert.alert('OTP', `OTP: ${data.otp0}${data.otp1}${data.otp2}${data.otp3}`);
-  }
+    navigation.navigate('forgotPasswordStepTree');
+  };
 
   const handleResendCode = () => {
     setIsResendTimerActive(true);
-  }
+  };
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -57,7 +77,7 @@ export const useForgotPasswordStepTwo = () => {
     return () => clearInterval(intervalId);
   }, [isResendTimerActive, timer]);
 
-  const opts = new Array(5).fill('')
+  const opts = new Array(5).fill('');
 
   return {
     timer,
@@ -68,6 +88,6 @@ export const useForgotPasswordStepTwo = () => {
     errors,
     handleSubmitForm,
     handleResendCode,
-    opts
-  }
-}
+    opts,
+  };
+};

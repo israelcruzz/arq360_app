@@ -38,7 +38,6 @@ export const useSignUpStepOne = () => {
   }, [email]);
 
   const handleSubmitForm = (data: SubmitFormValidateData) => {
-    Alert.alert('Emaill', data.email);
     handleClickNextScreen();
   }
 

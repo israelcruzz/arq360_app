@@ -38,11 +38,10 @@ export const useSignUpStepTwo = () => {
     const verifyPasswordsMatch = data.password === data.confirmPassword;
 
     if(!verifyPasswordsMatch) {
-      Alert.alert('As senhas digitadas não são iguais!', 'Arrume');
+      Alert.alert('As senhas digitadas não são iguais!', 'Ajuste para criar sua senha');
       return;
     }
 
-    Alert.alert('Emaill', data.confirmPassword);
     handleClickNextScreen();
   }
 

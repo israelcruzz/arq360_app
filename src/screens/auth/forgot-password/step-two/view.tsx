@@ -25,8 +25,8 @@ export const ForgotPasswordStepTwoView = ({
         <BackButton />
 
         <View style={styles.textHeaderArea}>
-          <HeadingText title="Enter Code" />
-          <DescriptionText text="An 4 digit OTP has been sent to your email" />
+          <HeadingText title="Digite o código" />
+          <DescriptionText text="Um código de 4 digitos foi enviado para o seu e-mail" />
         </View>
 
         <View style={styles.otpArea}>
@@ -65,7 +65,7 @@ export const ForgotPasswordStepTwoView = ({
         <Button text="Próximo" onPress={handleSubmit(handleSubmitForm)} />
         <TouchableOpacity onPress={handleResendCode} disabled={isResendTimerActive}>
           <Text style={styles.resendText}>
-            Resend Code {isResendTimerActive && <Text style={styles.timerText}>({timer})</Text>}
+            Reenviar Código {isResendTimerActive && <Text style={styles.timerText}>({timer})</Text>}
           </Text>
         </TouchableOpacity>
       </View>

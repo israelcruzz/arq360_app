@@ -11,7 +11,6 @@ import { Button } from '@/components/button';
 import { ConvenientLine } from '@/components/convenient-line';
 import { useCreateProjectStepTwo } from './model';
 import RNPickerSelect from 'react-native-picker-select';
-import { useState } from 'react';
 
 export const CreateProjectStepTwoView = ({
   addConvenientModal,

@@ -189,7 +189,7 @@ export const ViewProjectView = ({
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.convenientListArea}>
-            {Array.from({ length: 4 }).map((_, index) => (
+            {Array.from({ length: 1 }).map((_, index) => (
               <View key={index} style={styles.convenientBoxArea}>
                 <View style={styles.convenientBox}>
                   <Image

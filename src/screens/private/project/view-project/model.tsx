@@ -14,10 +14,6 @@ export const useViewProject = () => {
   const route = useRoute<ProjectViewProps>();
   const { projectId } = route.params;
 
-  useEffect(() => {
-    Alert.alert('O projeto é', projectId);
-  });
-
   const handleCloseBottomSheet = () => {
     bottomSheetRef.current?.close();
   };

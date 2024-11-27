@@ -1,5 +1,5 @@
-import { useProfile } from "./model";
-import { ProfileView } from "./view";
+import { useProfile } from './model';
+import { ProfileView } from './view';
 
 export const ProfileViewModal = () => {
   const {
@@ -7,11 +7,13 @@ export const ProfileViewModal = () => {
     handleLogoutModalDesactive,
     handlePickImage,
     image,
-    logoutModal
+    logoutModal,
+    logoutButton,
   } = useProfile();
 
   return (
     <ProfileView
+      logoutButton={logoutButton}
       PROFILE_OPTIONS={PROFILE_OPTIONS}
       handleLogoutModalDesactive={handleLogoutModalDesactive}
       handlePickImage={handlePickImage}
@@ -19,4 +21,4 @@ export const ProfileViewModal = () => {
       logoutModal={logoutModal}
     />
   );
-}
+};

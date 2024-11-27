@@ -1,8 +1,10 @@
-import { ToastAndroid } from 'react-native';
-import { useState } from 'react';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { CreditCard, LockKeyhole, LogOut, LucideIcon, Moon, UserPen } from 'lucide-react-native';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { ToastAndroid } from 'react-native';
+
+import { useStorageAuth } from '@/hooks/auth-hooks/useStorageAuth';
 import { AppRootList } from '@/navigation/private/private.navigations';
 
 interface IProfileOptions {
@@ -66,11 +68,18 @@ export const useProfile = () => {
     }
   };
 
+  const { setUser } = useStorageAuth();
+
+  const logoutButton = () => {
+    setUser(false);
+  };
+
   return {
     image,
     logoutModal,
     PROFILE_OPTIONS,
     handleLogoutModalDesactive,
     handlePickImage,
+    logoutButton,
   };
 };
