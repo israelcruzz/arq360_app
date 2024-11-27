@@ -27,7 +27,7 @@ export const ForgotPasswordStepTreeView = ({
           <BackButton />
 
           <View style={styles.textHeaderArea}>
-            <HeadingText title="Create new password" />
+            <HeadingText title="Crie sua nova senha" />
             <DescriptionText text="Your new password must be unique from those previously used." />
           </View>
         </View>

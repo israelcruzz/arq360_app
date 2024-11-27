@@ -24,8 +24,8 @@ export const ForgotPasswordStepOneView = ({
           <BackButton />
 
           <View style={styles.textHeaderArea}>
-            <HeadingText title="Forgot Password?" />
-            <DescriptionText text="Don’t worry! it happens. Please enter phone number associated with your account." />
+            <HeadingText title="Esqueceu sua Senha?" />
+            <DescriptionText text="Insira seu e-mail para que podemos enviar um código de verificação" />
           </View>
         </View>
 

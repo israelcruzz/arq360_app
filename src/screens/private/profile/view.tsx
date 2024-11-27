@@ -16,6 +16,7 @@ export const ProfileView = ({
   handlePickImage,
   image,
   logoutModal,
+  logoutButton
 }: ReturnType<typeof useProfile>) => {
   return (
     <View style={styles.container}>
@@ -73,7 +74,7 @@ export const ProfileView = ({
           <View style={styles.modalContent}>
             <Text style={styles.modalText}>Você tem certeza que deseja sair da sua conta?</Text>
             <View style={{ width: '100%', gap: 12 }}>
-              <Button text="Sair" />
+              <Button text="Sair" onPress={logoutButton} />
               <Button text="Voltar" variant="secondary" onPress={handleLogoutModalDesactive} />
             </View>
           </View>

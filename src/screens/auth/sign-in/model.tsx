@@ -1,18 +1,20 @@
-import { AntDesign } from "@expo/vector-icons";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Alert } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Alert } from 'react-native';
 import * as Yup from 'yup';
-import { AuthRootList } from "@/navigation/auth.navigation";
-import { iconsVerifyEmail } from "@/utils/records/icons-verify-email";
-import { iconsVerifyPassword } from "@/utils/records/icons-verify-password";
 
+import { useStorageAuth } from '@/hooks/auth-hooks/useStorageAuth';
+import { AuthRootList } from '@/navigation/auth.navigation';
+import { iconsVerifyEmail } from '@/utils/records/icons-verify-email';
+import { iconsVerifyPassword } from '@/utils/records/icons-verify-password';
 
 export const useSignIn = () => {
   const [viewPassword, setViewPassword] = useState<boolean>(true);
   const [verifyEmail, setVerifyEmail] = useState<boolean>(false);
+  const { setUser } = useStorageAuth();
 
   const validateFormSchema = Yup.object().shape({
     email: Yup.string().email('E-mail inválido').required('Campo obrigatório'),
@@ -39,12 +41,12 @@ export const useSignIn = () => {
   const email = watch('email');
 
   const handleSubmitForm = (data: SubmitFormValidateData) => {
-    Alert.alert('Dados do Form', `E-mail: ${data.email} & Senha: ${data.password}`);
+    setUser(true);
   };
 
   const handleViewPassword = () => {
-    setViewPassword(!viewPassword)
-  }
+    setViewPassword(!viewPassword);
+  };
 
   useEffect(() => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,12 +56,12 @@ export const useSignIn = () => {
   const navigator = useNavigation<NavigationProp<AuthRootList>>();
 
   const navigateToForgotPassword = () => {
-    navigator.navigate('signUpStepOne')
-  }
+    navigator.navigate('forgotPasswordStepOne');
+  };
 
   const navigateToSignUp = () => {
-    navigator.navigate('signUpStepOne')
-  }
+    navigator.navigate('signUpStepOne');
+  };
 
   return {
     viewPassword,
@@ -73,5 +75,5 @@ export const useSignIn = () => {
     iconsVerifyEmail,
     iconsVerifyPassword,
     errors,
-  }
-}
+  };
+};

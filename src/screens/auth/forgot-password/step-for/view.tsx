@@ -11,7 +11,7 @@ export const ForgotPasswordStepForView = ({
       <View style={styles.contentArea}>
         <Image source={require('../../../../assets/images/Successmark.png')} />
         <View style={styles.textArea}>
-          <Text style={styles.headingText}>Password Changed!</Text>
+          <Text style={styles.headingText}>Senha Alterada!</Text>
           <Text style={styles.descriptionText}>Your password has been changed successfully.</Text>
         </View>
       </View>

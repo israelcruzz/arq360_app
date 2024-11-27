@@ -2,7 +2,7 @@ import { useSignUpStepTree } from "./model"
 import { SignUpStepTreeView } from "./view";
 
 export const SignUpStepTreeViewModel = () => {
-  const { handlePickImage, imageUri } = useSignUpStepTree();
+  const { handlePickImage, imageUri, handleClickNextScreen } = useSignUpStepTree();
 
-  return <SignUpStepTreeView handlePickImage={handlePickImage} imageUri={imageUri}  />
+  return <SignUpStepTreeView handleClickNextScreen={handleClickNextScreen} handlePickImage={handlePickImage} imageUri={imageUri}  />
 }

@@ -86,7 +86,7 @@ export const ExplorerView = ({
             <ScrollView
               showsVerticalScrollIndicator={false}
               contentContainerStyle={styles.projectArea}>
-              {Array.from({ length: 10 }).map((_, index) => {
+              {Array.from({ length: 1 }).map((_, index) => {
                 return (
                   <CardProject
                     key={`@arq360/card-project-${index}`}
@@ -116,7 +116,7 @@ export const ExplorerView = ({
             <ScrollView
               showsVerticalScrollIndicator={false}
               contentContainerStyle={styles.projectArea}>
-              {Array.from({ length: 10 }).map((_, index) => {
+              {Array.from({ length: 1 }).map((_, index) => {
                 return (
                   <ClientLine
                     onPress={handleActiveRemoveClientModal}
